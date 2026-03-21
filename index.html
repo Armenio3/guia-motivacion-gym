@@ -8,8 +8,6 @@
   <style>
     :root{
       --bg:#0b0b0b;
-      --panel:#111112;
-      --panel2:#161617;
       --text:#ffffff;
       --muted:rgba(255,255,255,.82);
       --muted2:rgba(255,255,255,.62);
@@ -47,7 +45,6 @@
       margin:0 auto;
     }
 
-    .soft{color:var(--muted)}
     .soft2{color:var(--muted2)}
 
     .divider{
@@ -127,7 +124,6 @@
       padding:8px 10px;
       border-radius:10px;
       transition:all .25s ease;
-      position:relative;
     }
 
     nav a:hover{
@@ -144,7 +140,7 @@
       font-weight:900;
       letter-spacing:.2px;
       border:1px solid transparent;
-      transition:transform .18s ease, filter .2s ease, box-shadow .25s ease, border .25s ease, background .25s ease;
+      transition:transform .18s ease, filter .2s ease, box-shadow .25s ease, border .25s ease;
       user-select:none;
       white-space:nowrap;
     }
@@ -190,27 +186,19 @@
       border:1px solid var(--line);
       box-shadow:var(--shadow);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.38), rgba(0,0,0,.82)),
-        url("gym.jpg") center/cover no-repeat;
+        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.55)),
+        linear-gradient(90deg, rgba(0,0,0,.70) 0%, rgba(0,0,0,.42) 48%, rgba(0,0,0,.28) 100%),
+        url("https://img.sanishtech.com/u/9399724f87141ae1f90da7c0f163cd13.png") center/cover no-repeat;
       min-height:520px;
       position:relative;
       animation:fadeUp .9s ease;
-    }
-
-    .hero-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.45) 45%, rgba(0,0,0,.30) 100%);
-      z-index:0;
     }
 
     .hero-card::after{
       content:"";
       position:absolute;
       inset:0;
-      background:radial-gradient(950px 520px at 70% 25%, rgba(255,122,0,.18), transparent 62%);
+      background:radial-gradient(950px 520px at 70% 25%, rgba(255,122,0,.16), transparent 62%);
       pointer-events:none;
       animation:heroGlow 6s ease-in-out infinite alternate;
       z-index:0;
@@ -460,10 +448,6 @@
       color:var(--orange);
     }
 
-    .cta-band .btn{
-      padding:12px 18px;
-    }
-
     .testimonials{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
@@ -709,7 +693,7 @@
             </svg>
           </div>
           <h3>Ambiente motivador</h3>
-          <p>Un espacio para progresar, no para venir a sacarte una foto con la mancuerna.</p>
+          <p>Un espacio para progresar, no para venir a mirar la pared y negociar con la cinta caminadora.</p>
         </article>
       </div>
 

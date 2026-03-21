@@ -40,12 +40,18 @@
       text-decoration:none;
     }
 
+    button{
+      font:inherit;
+    }
+
     .wrap{
       width:min(var(--max), calc(100% - 40px));
       margin:0 auto;
     }
 
-    .soft2{color:var(--muted2)}
+    .soft2{
+      color:var(--muted2);
+    }
 
     .divider{
       width:120px;
@@ -143,6 +149,7 @@
       transition:transform .18s ease, filter .2s ease, box-shadow .25s ease, border .25s ease;
       user-select:none;
       white-space:nowrap;
+      cursor:pointer;
     }
 
     .btn:hover{
@@ -513,6 +520,67 @@
       align-items:flex-start;
     }
 
+    /* MODAL HORARIOS */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.86);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:9999;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .3s ease;
+      backdrop-filter:blur(6px);
+    }
+
+    .modal.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .modal-box{
+      position:relative;
+      width:min(1000px, 95vw);
+      max-height:90vh;
+      animation:zoomIn .3s ease;
+    }
+
+    .modal-img{
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:90vh;
+      object-fit:contain;
+      border-radius:18px;
+      box-shadow:0 20px 60px rgba(0,0,0,.6);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .modal-close{
+      position:absolute;
+      top:-14px;
+      right:-14px;
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      border:none;
+      background:linear-gradient(135deg, var(--orange), var(--orange2));
+      color:#111;
+      font-size:20px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 10px 30px rgba(255,122,0,.35);
+      transition:transform .2s ease, filter .2s ease;
+    }
+
+    .modal-close:hover{
+      transform:scale(1.08);
+      filter:brightness(1.04);
+    }
+
     @keyframes floatLogo{
       0%,100%{transform:translateY(0)}
       50%{transform:translateY(-3px)}
@@ -541,6 +609,17 @@
       to{
         opacity:1;
         transform:translateY(0);
+      }
+    }
+
+    @keyframes zoomIn{
+      from{
+        transform:scale(.92);
+        opacity:0;
+      }
+      to{
+        transform:scale(1);
+        opacity:1;
       }
     }
 
@@ -596,6 +675,11 @@
       .hero-phone{
         font-size:15px;
       }
+
+      .modal-close{
+        top:10px;
+        right:10px;
+      }
     }
   </style>
 </head>
@@ -641,13 +725,16 @@
             <small>Resultados reales, ambiente motivador y seguimiento.</small>
           </p>
 
-          
+          <div class="hero-phone">📲 261 512 5111</div>
 
           <div class="hero-actions">
             <a class="btn primary" href="https://wa.me/5492615125111?text=Hola,%20quiero%20info%20del%20gym" target="_blank" rel="noopener">
               EMPEZAR HOY
             </a>
-            <a class="btn ghost" href="#horarios">VER HORARIOS</a>
+
+            <button type="button" class="btn ghost" onclick="abrirHorarios()">
+              VER HORARIOS
+            </button>
           </div>
 
           <div class="floating-contact">
@@ -693,7 +780,7 @@
             </svg>
           </div>
           <h3>Ambiente motivador</h3>
-          <p>Un espacio para progresar, no para venir a mirar la pared y negociar con la cinta caminadora.</p>
+          <p>Un espacio para progresar, no para venir a negociar con la cinta caminadora.</p>
         </article>
       </div>
 
@@ -728,29 +815,7 @@
     </div>
   </section>
 
-  <section id="horarios">
-    <div class="wrap">
-      <h2 class="title">Horarios</h2>
-      <p class="sub">Editá esta sección con tus horarios reales.</p>
 
-      <div class="cards">
-        <article class="card">
-          <h3 style="text-align:center;margin:0 0 6px;font-weight:950;">Lunes a Viernes</h3>
-          <p>08:00 — 21:00</p>
-        </article>
-
-        <article class="card">
-          <h3 style="text-align:center;margin:0 0 6px;font-weight:950;">Sábados</h3>
-          <p>Consultar</p>
-        </article>
-
-        <article class="card">
-          <h3 style="text-align:center;margin:0 0 6px;font-weight:950;">Domingos</h3>
-          <p>Cerrado</p>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <section id="actividades">
     <div class="wrap">
@@ -810,8 +875,46 @@
     </div>
   </footer>
 
+  <!-- MODAL HORARIOS -->
+  <div id="modalHorarios" class="modal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" type="button" onclick="cerrarHorarios()" aria-label="Cerrar">✕</button>
+      <img
+        class="modal-img"
+        src="https://img.sanishtech.com/u/c6ddfb164b7b8253052407cbaa2e9d61.jpeg"
+        alt="Horarios Guía & Motivación Gym"
+      />
+    </div>
+  </div>
+
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    const modalHorarios = document.getElementById("modalHorarios");
+
+    function abrirHorarios(){
+      modalHorarios.classList.add("active");
+      modalHorarios.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function cerrarHorarios(){
+      modalHorarios.classList.remove("active");
+      modalHorarios.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    modalHorarios.addEventListener("click", function(e){
+      if(e.target === modalHorarios){
+        cerrarHorarios();
+      }
+    });
+
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape" && modalHorarios.classList.contains("active")){
+        cerrarHorarios();
+      }
+    });
   </script>
 </body>
 </html>

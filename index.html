@@ -262,7 +262,7 @@
       background:
         linear-gradient(180deg, rgba(0,0,0,.24), rgba(0,0,0,.62)),
         linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.48) 48%, rgba(0,0,0,.30) 100%),
-        url("https://img.sanishtech.com/u/9399724f87141ae1f90da7c0f163cd13.png") center/cover no-repeat;
+        url("https://i.ibb.co/m5Y79gBm/3152c6db-4710-46f6-9e69-cfcf5f133600.png") center/cover no-repeat;
       min-height:560px;
       position:relative;
       animation:fadeUp .9s ease;
@@ -782,7 +782,7 @@
       min-height:260px;
       background:
         linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)),
-        url("https://img.sanishtech.com/u/9399724f87141ae1f90da7c0f163cd13.png") center/cover no-repeat;
+        url("https://i.ibb.co/6Rm5Tbk3/GYM-imagen2.jpg") center/cover no-repeat;
       box-shadow:0 18px 45px rgba(0,0,0,.28);
       position:relative;
     }
@@ -968,6 +968,58 @@
       transform:scale(1.08);
       filter:brightness(1.04);
     }
+
+    /* SCROLL ANIMATIONS */
+    .reveal{
+      opacity:0;
+      transform:translateY(42px);
+      transition:
+        opacity .8s cubic-bezier(.2,.65,.2,1),
+        transform .8s cubic-bezier(.2,.65,.2,1);
+      will-change:opacity, transform;
+    }
+
+    .reveal-left{
+      opacity:0;
+      transform:translateX(-48px);
+      transition:
+        opacity .8s cubic-bezier(.2,.65,.2,1),
+        transform .8s cubic-bezier(.2,.65,.2,1);
+      will-change:opacity, transform;
+    }
+
+    .reveal-right{
+      opacity:0;
+      transform:translateX(48px);
+      transition:
+        opacity .8s cubic-bezier(.2,.65,.2,1),
+        transform .8s cubic-bezier(.2,.65,.2,1);
+      will-change:opacity, transform;
+    }
+
+    .reveal-scale{
+      opacity:0;
+      transform:scale(.92);
+      transition:
+        opacity .8s cubic-bezier(.2,.65,.2,1),
+        transform .8s cubic-bezier(.2,.65,.2,1);
+      will-change:opacity, transform;
+    }
+
+    .reveal.show,
+    .reveal-left.show,
+    .reveal-right.show,
+    .reveal-scale.show{
+      opacity:1;
+      transform:none;
+    }
+
+    .delay-1{ transition-delay:.08s; }
+    .delay-2{ transition-delay:.16s; }
+    .delay-3{ transition-delay:.24s; }
+    .delay-4{ transition-delay:.32s; }
+    .delay-5{ transition-delay:.40s; }
+    .delay-6{ transition-delay:.48s; }
 
     @keyframes floatLogo{
       0%,100%{transform:translateY(0)}
@@ -1178,6 +1230,14 @@
         transition:none !important;
         scroll-behavior:auto !important;
       }
+
+      .reveal,
+      .reveal-left,
+      .reveal-right,
+      .reveal-scale{
+        opacity:1 !important;
+        transform:none !important;
+      }
     }
   </style>
 </head>
@@ -1206,7 +1266,7 @@
     <div class="wrap">
       <div class="hero-card">
         <div class="hero-grid">
-          <div class="hero-copy">
+          <div class="hero-copy reveal-left show">
             <div class="hero-top">
               <div class="left">
                 <span class="pill">
@@ -1234,22 +1294,22 @@
             </div>
 
             <div class="quick-stats">
-              <div class="stat">
+              <div class="stat reveal delay-1">
                 <strong>Entrenamiento</strong>
                 <span>Con estructura y objetivo</span>
               </div>
-              <div class="stat">
+              <div class="stat reveal delay-2">
                 <strong>Ambiente</strong>
                 <span>Motivador y enfocado</span>
               </div>
-              <div class="stat">
+              <div class="stat reveal delay-3">
                 <strong>Seguimiento</strong>
                 <span>Para progresar en serio</span>
               </div>
             </div>
           </div>
 
-          <div class="hero-side">
+          <div class="hero-side reveal-right show">
             <div class="equipment-scene" aria-hidden="true">
               <div class="float-item plate plate-left"></div>
               <div class="float-item plate plate-right"></div>
@@ -1282,15 +1342,15 @@
 
   <section id="informacion" class="section-glow">
     <div class="wrap">
-      <h2 class="title">Más que un gym, <span>un sistema para progresar</span></h2>
-      <div class="divider"></div>
+      <h2 class="title reveal">Más que un gym, <span>un sistema para progresar</span></h2>
+      <div class="divider reveal delay-1"></div>
 
-      <p class="sub">
+      <p class="sub reveal delay-2">
         En Guía & Motivación no venís solo a entrenar: venís a mejorar, avanzar y sostener resultados reales con acompañamiento, constancia y una estructura clara.
       </p>
 
       <div class="cards">
-        <article class="card">
+        <article class="card reveal delay-1">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M16 2H8a2 2 0 0 0-2 2v1H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V4a2 2 0 0 0-2-2zm0 3H8V4h8v1zm3 16H5V7h14v14z"/></svg>
           </div>
@@ -1298,7 +1358,7 @@
           <p>Analizamos tu punto de partida para que arranques con una base clara según tu nivel y objetivo.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal delay-2">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M3 17h2v4H3v-4zm4-6h2v10H7V11zm4 3h2v7h-2v-7zm4-9h2v16h-2V5zm4 5h2v11h-2V10z"/></svg>
           </div>
@@ -1306,7 +1366,7 @@
           <p>El progreso se observa y se ajusta. La idea no es repetir por costumbre, sino avanzar con sentido.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal delay-3">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M20 8h-2V6a1 1 0 0 0-1-1h-1V4a1 1 0 0 0-1-1h-2v2h1v2H10V5h1V3H9a1 1 0 0 0-1 1v1H7a1 1 0 0 0-1 1v2H4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v2a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1h2v-2h-1v-2h4v2h-1v2h2a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-2h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/></svg>
           </div>
@@ -1314,7 +1374,7 @@
           <p>Cada entrenamiento tiene un propósito: fuerza, masa muscular, resistencia o mejora física general.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal delay-4">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 2l2.2 4.9L19 8l-3.7 3.4.9 5L12 14.7 7.8 16.4l.9-5L5 8l4.8-1.1L12 2z"/></svg>
           </div>
@@ -1322,7 +1382,7 @@
           <p>Un lugar pensado para entrenar en serio, con energía, enfoque y ganas de progresar de verdad.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal delay-5">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 1 5 5c0 1.3-.5 2.5-1.3 3.4L22 17l-1.4 1.4-2.2-2.2V22H5v-5.8l-2.2 2.2L1.4 17l6.3-6.6A5 5 0 1 1 12 2zm-2 17h4v-2h-4v2zm0-4h4v-2h-4v2z"/></svg>
           </div>
@@ -1330,7 +1390,7 @@
           <p>No se trata solo de hacer ejercicios, sino de entender el proceso y entrenar con intención.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal delay-6">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M13 2L6 14h5l-1 8 7-12h-5l1-8z"/></svg>
           </div>
@@ -1339,7 +1399,7 @@
         </article>
       </div>
 
-      <div class="cta-band">
+      <div class="cta-band reveal-scale">
         <h2><span>ACÁ NO VENÍS A PROBAR</span>, VENÍS A CAMBIAR.</h2>
         <p style="margin:10px 0 16px; color:var(--muted);">
           Si querés empezar en un lugar donde se entrena con guía, motivación y enfoque, este puede ser tu próximo paso.
@@ -1356,12 +1416,12 @@
 
   <section id="actividades" class="section-glow">
     <div class="wrap">
-      <h2 class="title">Actividades</h2>
-      <div class="divider"></div>
-      <p class="sub">Podés adaptar esta sección según las clases y servicios reales de tu gym.</p>
+      <h2 class="title reveal">Actividades</h2>
+      <div class="divider reveal delay-1"></div>
+      <p class="sub reveal delay-2">Podés adaptar esta sección según las clases y servicios reales de tu gym.</p>
 
       <div class="cards">
-        <article class="card">
+        <article class="card reveal delay-1">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M20 8h-2V6a1 1 0 0 0-1-1h-1V4a1 1 0 0 0-1-1h-2v2h1v2H10V5h1V3H9a1 1 0 0 0-1 1v1H7a1 1 0 0 0-1 1v2H4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v2a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1h2v-2h-1v-2h4v2h-1v2h2a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-2h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/></svg>
           </div>
@@ -1369,15 +1429,15 @@
           <p>Entrenamiento de fuerza, hipertrofia y acondicionamiento general para progresar con base sólida.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal delay-2">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M7 21c-2 0-4-2-4-4 0-2.5 1.6-4.4 3.5-5.3.7-.3 1.5-.4 2.2-.3l.3-2.2c.2-1.4 1.4-2.5 2.9-2.5h1.6c1 0 1.9.5 2.4 1.3l1.1 1.7c.3.5.4 1 .4 1.5v1.6c0 .9-.4 1.8-1.1 2.4l-1.2 1.1c-.5.5-1.2.8-1.9.8H7z"/></svg>
           </div>
           <h3>Funcional</h3>
-          <p>Trabajo dinámico para resistencia, coordinación, movilidad y potencia, sin dejar el cuerpo “en modo mueble”.</p>
+          <p>Trabajo dinámico para resistencia, coordinación, movilidad y potencia, sin dejar el cuerpo en modo adorno.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal delay-3">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M4 19h16v2H4zm2-4h12v2H6zm2-4h8v2H8zm2-4h4v2h-4z"/></svg>
           </div>
@@ -1387,7 +1447,7 @@
       </div>
 
       <div class="mini-gallery">
-        <div class="gallery-card">
+        <div class="gallery-card reveal-left">
           <div class="gallery-copy">
             <strong>Entrená en un espacio real</strong>
             <span>Equipamiento, orden y ambiente pensado para progresar.</span>
@@ -1395,12 +1455,12 @@
         </div>
 
         <div class="gallery-side">
-          <div class="mini-panel">
+          <div class="mini-panel reveal-right delay-1">
             <h4>Constancia > motivación de lunes</h4>
             <p>La motivación ayuda, pero la constancia cambia el cuerpo. Por eso la experiencia del gym tiene que invitar a volver.</p>
           </div>
 
-          <div class="mini-panel">
+          <div class="mini-panel reveal-right delay-2">
             <h4>Entrená con criterio</h4>
             <p>Menos improvisación, más dirección. Así es como el esfuerzo deja de ser aleatorio y empieza a dar resultados.</p>
           </div>
@@ -1411,12 +1471,12 @@
 
   <section id="suplementos" class="section-glow">
     <div class="wrap">
-      <h2 class="title">Suplementos</h2>
-      <div class="divider"></div>
-      <p class="sub">Un apoyo útil para acompañar entrenamiento, recuperación y alimentación.</p>
+      <h2 class="title reveal">Suplementos</h2>
+      <div class="divider reveal delay-1"></div>
+      <p class="sub reveal delay-2">Un apoyo útil para acompañar entrenamiento, recuperación y alimentación.</p>
 
       <div class="cards">
-        <article class="card">
+        <article class="card reveal delay-1">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M7 2h10v2h-1v3.2l3.6 6.1A4 4 0 0 1 16.2 20H7.8a4 4 0 0 1-3.4-6.7L8 7.2V4H7V2zm3 2v3.7L6.1 14A2 2 0 0 0 7.8 18h8.4a2 2 0 0 0 1.7-3L14 7.7V4h-4z"/></svg>
           </div>
@@ -1424,7 +1484,7 @@
           <p>Ayuda al rendimiento, la fuerza y la recuperación muscular.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal delay-2">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M7 3h10l1 4v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7l1-4zm2 2-.5 2h7L15 5H9z"/></svg>
           </div>
@@ -1432,7 +1492,7 @@
           <p>Práctica para complementar el consumo diario de proteínas y apoyar la recuperación.</p>
         </article>
 
-        <article class="card">
+        <article class="card reveal delay-3">
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M13 2L6 14h5l-1 8 7-12h-5l1-8z"/></svg>
           </div>
@@ -1445,21 +1505,21 @@
 
   <section id="opiniones" class="section-glow">
     <div class="wrap">
-      <h2 class="title">Lo que dicen los alumnos</h2>
-      <div class="divider"></div>
+      <h2 class="title reveal">Lo que dicen los alumnos</h2>
+      <div class="divider reveal delay-1"></div>
 
       <div class="testimonials">
-        <blockquote>
+        <blockquote class="reveal delay-1">
           <p><b>Excelente ambiente</b>, me ayudó a ordenar el entrenamiento y sostenerlo.</p>
           <footer>Alumno/a</footer>
         </blockquote>
 
-        <blockquote>
+        <blockquote class="reveal delay-2">
           <p>Se siente la <b>motivación</b> desde que entrás. Muy buen acompañamiento.</p>
           <footer>Alumno/a</footer>
         </blockquote>
 
-        <blockquote>
+        <blockquote class="reveal delay-3">
           <p>Mejoré fuerza, constancia y ganas de entrenar en <b>pocas semanas</b>.</p>
           <footer>Alumno/a</footer>
         </blockquote>
@@ -1467,7 +1527,7 @@
     </div>
   </section>
 
-  <footer>
+  <footer class="reveal">
     <div class="wrap footer-grid">
       <div>
         <b>Guía & Motivación Gym</b>
@@ -1482,7 +1542,7 @@
       <button class="modal-close" type="button" onclick="cerrarHorarios()" aria-label="Cerrar">✕</button>
       <img
         class="modal-img"
-        src="https://img.sanishtech.com/u/c6ddfb164b7b8253052407cbaa2e9d61.jpeg"
+        src="https://i.ibb.co/GvGNP25z/1111.jpg"
         alt="Horarios Guía & Motivación Gym"
       />
     </div>
@@ -1514,6 +1574,28 @@
     document.addEventListener("keydown", function(e){
       if(e.key === "Escape" && modalHorarios.classList.contains("active")){
         cerrarHorarios();
+      }
+    });
+
+    const revealElements = document.querySelectorAll(
+      ".reveal, .reveal-left, .reveal-right, .reveal-scale"
+    );
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.14,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    revealElements.forEach(el => {
+      if(!el.classList.contains("show")){
+        observer.observe(el);
       }
     });
   </script>

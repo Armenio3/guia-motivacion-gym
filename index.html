@@ -1,264 +1,2154 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guía & Motivación Gym</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guía & Motivación Gym</title>
 
-<style>
-:root{
-  --bg:#0a0a0a;
-  --text:#fff;
-  --orange:#ff7a00;
-  --orange2:#ff9b34;
-}
+  <style>
+    :root{
+      --bg:#090909;
+      --bg2:#101010;
+      --panel:#121212;
+      --panel2:#171717;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.82);
+      --muted2:rgba(255,255,255,.62);
+      --line:rgba(255,255,255,.08);
+      --line-strong:rgba(255,122,0,.22);
+      --orange:#ff7a00;
+      --orange2:#ff9b34;
+      --orange3:#ffb55f;
+      --shadow:0 20px 70px rgba(0,0,0,.65);
+      --radius:20px;
+      --max:1140px;
+    }
 
-body{
-  margin:0;
-  font-family:system-ui;
-  background:var(--bg);
-  color:var(--text);
-}
+    *{
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
 
-/* HERO */
-.hero{
-  background:
-    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.7)),
-    url("https://i.ibb.co/m5Y79gBm/3152c6db-4710-46f6-9e69-cfcf5f133600.png") center/cover;
-  padding:120px 20px;
-  text-align:center;
-}
+    html,body{
+      margin:0;
+      padding:0;
+    }
 
-.hero h1{
-  font-size:48px;
-  margin:0;
-}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 50% -50%, rgba(255,122,0,.16), transparent 65%),
+        radial-gradient(900px 520px at 10% 20%, rgba(255,122,0,.07), transparent 60%),
+        linear-gradient(180deg, #0a0a0a 0%, #090909 100%);
+      overflow-x:hidden;
+    }
 
-.hero h1 span{
-  color:var(--orange);
-}
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
-.hero p{
-  margin:10px 0 20px;
-  color:#ccc;
-}
+    button{
+      font:inherit;
+    }
 
-.btn{
-  padding:14px 22px;
-  border:none;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-}
+    img{
+      max-width:100%;
+      display:block;
+    }
 
-.btn.primary{
-  background:linear-gradient(135deg,var(--orange),var(--orange2));
-}
+    .wrap{
+      width:min(var(--max), calc(100% - 40px));
+      margin:0 auto;
+      position:relative;
+      z-index:2;
+    }
 
-.btn.ghost{
-  background:transparent;
-  border:1px solid #555;
-  color:#fff;
-}
+    .soft2{
+      color:var(--muted2);
+    }
 
-/* ACTIVIDADES */
-.section{
-  padding:60px 20px;
-  text-align:center;
-}
+    .divider{
+      width:130px;
+      height:2px;
+      margin:14px auto 0;
+      background:linear-gradient(90deg, transparent, rgba(255,122,0,.95), transparent);
+      filter:drop-shadow(0 0 12px rgba(255,122,0,.28));
+    }
 
-.activity-buttons{
+    .section-glow{
+      position:relative;
+      isolation:isolate;
+    }
+
+    .section-glow::before{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:180px;
+      background:radial-gradient(closest-side, rgba(255,122,0,.08), transparent 70%);
+      z-index:0;
+      pointer-events:none;
+      transform:translateY(25%);
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(11,11,11,.72);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:240px;
+    }
+
+    .brand-photo{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:
+        0 0 0 2px rgba(255,122,0,.10),
+        0 14px 30px rgba(255,122,0,.18);
+      flex-shrink:0;
+    }
+
+    .brand b{
+      font-weight:900;
+      letter-spacing:.2px;
+      font-size:14px;
+      line-height:1.15;
+    }
+
+    .brand b span{
+      color:var(--orange);
+    }
+
+    nav ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    nav a{
+      font-size:13px;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+      transition:all .25s ease;
+      position:relative;
+    }
+
+    nav a::after{
+      content:"";
+      position:absolute;
+      left:10px;
+      right:10px;
+      bottom:4px;
+      height:1px;
+      background:linear-gradient(90deg, transparent, var(--orange), transparent);
+      transform:scaleX(0);
+      transform-origin:center;
+      transition:transform .25s ease;
+    }
+
+    nav a:hover{
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+    }
+
+    nav a:hover::after{
+      transform:scaleX(1);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 16px;
+      border-radius:12px;
+      font-weight:900;
+      letter-spacing:.2px;
+      border:1px solid transparent;
+      transition:transform .18s ease, filter .2s ease, box-shadow .25s ease, border .25s ease, background .25s ease;
+      user-select:none;
+      white-space:nowrap;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .btn::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:-120%;
+      width:70%;
+      height:100%;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+      transform:skewX(-25deg);
+      transition:left .6s ease;
+    }
+
+    .btn:hover::before{
+      left:130%;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn:active{
+      transform:translateY(1px);
+    }
+
+    .btn.primary{
+      background:linear-gradient(135deg, var(--orange), var(--orange2));
+      color:#121212;
+      box-shadow:0 16px 45px rgba(255,122,0,.20);
+    }
+
+    .btn.primary:hover{
+      filter:brightness(1.05);
+      box-shadow:0 18px 50px rgba(255,122,0,.32);
+    }
+
+    .btn.ghost{
+      background:rgba(255,255,255,.03);
+      border-color:rgba(255,255,255,.18);
+      color:var(--text);
+    }
+
+    .btn.ghost:hover{
+      border-color:rgba(255,122,0,.45);
+      box-shadow:0 0 0 4px rgba(255,122,0,.12);
+    }
+
+    .hero{
+      padding:26px 0 26px;
+      position:relative;
+    }
+
+    .hero-card{
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.62)),
+        linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.48) 48%, rgba(0,0,0,.26) 100%),
+        url("https://i.ibb.co/m5Y79gBm/3152c6db-4710-46f6-9e69-cfcf5f133600.png") center/cover no-repeat;
+      min-height:590px;
+      position:relative;
+      isolation:isolate;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(700px 300px at 18% 15%, rgba(255,122,0,.12), transparent 55%),
+        radial-gradient(900px 420px at 80% 20%, rgba(255,122,0,.10), transparent 55%);
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(950px 520px at 70% 25%, rgba(255,122,0,.14), transparent 62%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:2;
+      min-height:590px;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      align-items:center;
+      gap:26px;
+      padding:42px 28px;
+    }
+
+    .hero-copy{
+      position:relative;
+      z-index:2;
+      max-width:720px;
+    }
+
+    .hero-top{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:12px;
+      margin-bottom:24px;
+    }
+
+    .hero-top .left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter:blur(8px);
+    }
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--orange);
+      box-shadow:0 0 0 6px rgba(255,122,0,.15);
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:clamp(36px, 5vw, 66px);
+      line-height:.96;
+      font-weight:950;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      text-shadow:0 14px 50px rgba(0,0,0,.55);
+      max-width:900px;
+    }
+
+    h1 .amp{
+      color:var(--orange);
+      text-shadow:0 0 18px rgba(255,122,0,.35);
+    }
+
+    .hero-sub{
+      margin:0 0 12px;
+      max-width:620px;
+      color:var(--muted);
+      font-size:clamp(15px, 1.9vw, 19px);
+      line-height:1.5;
+    }
+
+    .hero-sub small{
+      display:block;
+      margin-top:6px;
+      color:var(--muted2);
+      font-size:.95em;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      justify-content:flex-start;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+
+    .quick-stats{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+      margin-top:24px;
+      max-width:640px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,.045);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:14px 12px;
+      text-align:center;
+      backdrop-filter:blur(8px);
+      box-shadow:0 12px 34px rgba(0,0,0,.18);
+      transition:transform .22s ease, border-color .22s ease;
+    }
+
+    .stat:hover{
+      transform:translateY(-4px);
+      border-color:rgba(255,122,0,.28);
+    }
+
+    .stat strong{
+      display:block;
+      color:var(--orange2);
+      font-size:18px;
+      margin-bottom:4px;
+    }
+
+    .stat span{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .hero-side{
+      position:relative;
+      min-height:420px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-end;
+      z-index:1;
+    }
+
+    .hero-badge{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      background:rgba(0,0,0,.58);
+      border:1px solid rgba(255,122,0,.35);
+      border-radius:16px;
+      padding:14px 16px;
+      color:#fff;
+      backdrop-filter:blur(8px);
+      box-shadow:0 12px 30px rgba(0,0,0,.30);
+      z-index:3;
+    }
+
+    .hero-badge strong{
+      display:block;
+      color:var(--orange);
+      font-size:15px;
+      margin-bottom:4px;
+    }
+
+    .hero-badge span{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .gym-shapes{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .shape{
+      position:absolute;
+      opacity:.18;
+      filter:drop-shadow(0 16px 24px rgba(0,0,0,.35));
+      transition:transform .18s linear;
+      will-change:transform;
+    }
+
+    .shape.plate{
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      border:10px solid rgba(255,122,0,.92);
+      background:
+        radial-gradient(circle at center, transparent 0 22px, rgba(255,255,255,.05) 22px 28px, transparent 28px),
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.14), transparent 45%),
+        linear-gradient(145deg, rgba(255,122,0,.12), rgba(255,255,255,.02));
+      box-shadow:
+        inset 0 0 0 8px rgba(0,0,0,.34),
+        inset 0 0 22px rgba(255,122,0,.10),
+        0 0 24px rgba(255,122,0,.10);
+    }
+
+    .shape.plate::before,
+    .shape.plate::after{
+      content:"";
+      position:absolute;
+      inset:18px;
+      border-radius:50%;
+      border:2px solid rgba(255,122,0,.22);
+    }
+
+    .shape.dumbbell{
+      width:220px;
+      height:70px;
+    }
+
+    .shape.dumbbell::before{
+      content:"";
+      position:absolute;
+      left:40px;
+      right:40px;
+      top:29px;
+      height:12px;
+      border-radius:999px;
+      background:linear-gradient(180deg, #d8d8d8, #777);
+      box-shadow:inset 0 0 6px rgba(0,0,0,.45);
+    }
+
+    .shape.dumbbell .w{
+      position:absolute;
+      top:12px;
+      width:30px;
+      height:46px;
+      border-radius:8px;
+      background:linear-gradient(180deg, #1d1d1f, #090909);
+      border:2px solid rgba(255,122,0,.40);
+    }
+
+    .shape.dumbbell .w1{ left:0; }
+    .shape.dumbbell .w2{ left:22px; width:22px; }
+    .shape.dumbbell .w3{ right:22px; width:22px; }
+    .shape.dumbbell .w4{ right:0; }
+
+    .shape-bar{
+      position:absolute;
+      width:260px;
+      height:22px;
+      opacity:.14;
+      pointer-events:none;
+      z-index:1;
+      transition:transform .18s linear;
+    }
+
+    .shape-bar::before{
+      content:"";
+      position:absolute;
+      inset:7px 30px;
+      border-radius:999px;
+      background:linear-gradient(180deg, #d9d9d9, #7e7e7e);
+      box-shadow:inset 0 0 6px rgba(0,0,0,.45);
+    }
+
+    .shape-bar::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 10px 11px, transparent 0 6px, rgba(255,122,0,.95) 6px 10px, transparent 10px),
+        radial-gradient(circle at 26px 11px, transparent 0 6px, rgba(255,122,0,.95) 6px 10px, transparent 10px),
+        radial-gradient(circle at calc(100% - 26px) 11px, transparent 0 6px, rgba(255,122,0,.95) 6px 10px, transparent 10px),
+        radial-gradient(circle at calc(100% - 10px) 11px, transparent 0 6px, rgba(255,122,0,.95) 6px 10px, transparent 10px);
+    }
+
+    .shape-1{ top:9%; right:-35px; }
+    .shape-2{ top:62%; left:-48px; width:92px; height:92px; }
+    .shape-3{ top:44%; right:7%; transform:rotate(-18deg); opacity:.12; }
+    .shape-4{ bottom:10%; right:-36px; transform:rotate(11deg); }
+
+    section{
+      padding:62px 0;
+      position:relative;
+    }
+
+    .title{
+      text-align:center;
+      margin:0 0 10px;
+      font-weight:950;
+      letter-spacing:.2px;
+      font-size:30px;
+    }
+
+    .title span{
+      color:var(--orange);
+    }
+
+    .sub{
+      text-align:center;
+      margin:0 auto 26px;
+      max-width:780px;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+      margin-top:22px;
+    }
+
+    .card{
+      background:
+        radial-gradient(650px 180px at 50% 0%, rgba(255,122,0,.10), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:22px 18px 18px;
+      box-shadow:0 16px 45px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      isolation:isolate;
+      backdrop-filter:blur(6px);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:auto -20% -60% auto;
+      width:160px;
+      height:160px;
+      border-radius:50%;
+      border:14px solid rgba(255,122,0,.07);
+      z-index:0;
+      transform:rotate(18deg);
+      transition:transform .3s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 22px 55px rgba(0,0,0,.42);
+      border-color:rgba(255,122,0,.20);
+    }
+
+    .card:hover::before{
+      transform:rotate(80deg) scale(1.05);
+    }
+
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:radial-gradient(420px 120px at 50% 120%, rgba(255,122,0,.09), transparent 60%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .icon{
+      width:56px;
+      height:56px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,122,0,.12);
+      border:1px solid rgba(255,122,0,.25);
+      box-shadow:0 14px 35px rgba(255,122,0,.14);
+      margin:0 auto 12px;
+      position:relative;
+      z-index:1;
+      transition:transform .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover .icon{
+      transform:scale(1.06);
+      box-shadow:0 18px 42px rgba(255,122,0,.20);
+    }
+
+    .icon svg{
+      width:28px;
+      height:28px;
+      fill:var(--orange);
+    }
+
+    .card h3{
+      margin:0 0 8px;
+      text-align:center;
+      font-size:16px;
+      font-weight:950;
+      position:relative;
+      z-index:1;
+    }
+
+    .card p{
+      margin:0;
+      text-align:center;
+      color:var(--muted);
+      font-size:13.5px;
+      position:relative;
+      z-index:1;
+      line-height:1.55;
+    }
+
+    .cta-band{
+      margin-top:36px;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(900px 240px at 50% 0%, rgba(255,122,0,.16), transparent 70%),
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border-radius:24px;
+      padding:32px 20px;
+      text-align:center;
+      box-shadow:0 14px 40px rgba(0,0,0,.22);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .cta-band h2{
+      margin:0 0 14px;
+      font-size:21px;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+      font-weight:950;
+      position:relative;
+      z-index:1;
+    }
+
+    .cta-band h2 span{
+      color:var(--orange);
+    }
+
+    .cta-band p{
+      position:relative;
+      z-index:1;
+    }
+
+    .mini-gallery{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:16px;
+      margin-top:28px;
+    }
+
+    .gallery-card{
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      min-height:280px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)),
+        url("https://i.ibb.co/6Rm5Tbk3/GYM-imagen2.jpg") center/cover no-repeat;
+      box-shadow:0 18px 45px rgba(0,0,0,.28);
+      position:relative;
+    }
+
+    .gallery-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,.52));
+      pointer-events:none;
+    }
+
+    .gallery-copy{
+      position:absolute;
+      left:18px;
+      right:18px;
+      bottom:18px;
+      z-index:1;
+    }
+
+    .gallery-copy strong{
+      display:block;
+      font-size:18px;
+      margin-bottom:6px;
+    }
+
+    .gallery-copy span{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .gallery-side{
+      display:grid;
+      gap:16px;
+    }
+
+    .mini-panel{
+      border-radius:20px;
+      background:
+        radial-gradient(500px 180px at 50% 0%, rgba(255,122,0,.08), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      padding:20px;
+      box-shadow:0 16px 40px rgba(0,0,0,.26);
+    }
+
+    .mini-panel h4{
+      margin:0 0 10px;
+      font-size:16px;
+      color:var(--orange2);
+    }
+
+    .mini-panel p{
+      margin:0;
+      color:var(--muted);
+      font-size:13.5px;
+      line-height:1.6;
+    }
+
+ .activity-buttons{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
-  max-width:1100px;
-  margin:auto;
+  grid-template-columns:repeat(3, 1fr);
+  gap:18px;
+  margin-top:30px;
 }
 
 .actividad-btn{
-  background:#111;
-  border-radius:20px;
-  padding:30px;
-  min-height:250px;
-  cursor:pointer;
   position:relative;
-  transition:.3s;
-  border:1px solid #222;
-}
-
-.actividad-btn:hover{
-  transform:translateY(-8px);
-  border-color:var(--orange);
-}
-
-.actividad-btn h3{
-  color:var(--orange2);
-  font-size:24px;
-}
-
-.actividad-btn p{
-  color:#bbb;
-  font-size:16px;
-}
-
-.actividad-btn::after{
-  content:"CLICK PARA VER";
-  position:absolute;
-  bottom:15px;
-  left:20px;
-  right:20px;
-  background:var(--orange);
-  padding:10px;
-  border-radius:10px;
-  font-size:12px;
-}
-
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.9);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-}
-
-.modal.active{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.modal img{
-  max-width:90%;
-  border-radius:10px;
-}
-
-.close{
-  position:absolute;
-  top:20px;
-  right:20px;
-  background:var(--orange);
-  border:none;
-  padding:10px;
   cursor:pointer;
+  padding:22px 20px 20px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.12);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.04), rgba(255,255,255,.01)),
+    radial-gradient(420px 180px at 50% 0%, rgba(255,122,0,.10), transparent 58%);
+  transition:all .25s ease;
+  overflow:hidden;
+  box-shadow:0 16px 40px rgba(0,0,0,.24);
+  text-align:left;
+  color:var(--text);
 }
 
-/* MODAL ACTIVIDAD */
-.modal-box{
-  background:#111;
-  padding:30px;
+    .actividad-btn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent, rgba(255,122,0,.22), transparent);
+      opacity:0;
+      transition:opacity .28s ease;
+    }
+
+    .actividad-btn::after{
+      content:"CLICK PARA VER";
+      position:absolute;
+      right:14px;
+      bottom:14px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.8px;
+      color:rgba(255,255,255,.72);
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .actividad-btn:hover{
+      transform:translateY(-6px) scale(1.015);
+      border-color:rgba(255,122,0,.38);
+      box-shadow:0 24px 54px rgba(255,122,0,.18);
+    }
+
+    .actividad-btn:hover::before{
+      opacity:1;
+    }
+
+    .actividad-btn:active{
+      transform:translateY(-1px) scale(.995);
+    }
+
+    .actividad-btn .tag{
+      position:absolute;
+      top:14px;
+      right:14px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.4px;
+      background:rgba(255,122,0,.14);
+      border:1px solid rgba(255,122,0,.22);
+      padding:5px 9px;
+      border-radius:999px;
+      color:var(--orange2);
+    }
+
+    .actividad-btn-top{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      position:relative;
+      z-index:1;
+    }
+
+  .actividad-btn-icon{
+  width:80px;
+  height:80px;
   border-radius:20px;
-  max-width:900px;
-  width:90%;
+  display:grid;
+  place-items:center;
+  background:rgba(255,122,0,.14);
+  border:1px solid rgba(255,122,0,.35);
+  flex-shrink:0;
+  box-shadow:0 16px 40px rgba(255,122,0,.18);
+  transition:transform .25s ease;
 }
 
-.carousel img{
-  width:100%;
-  border-radius:10px;
+.actividad-btn:hover .actividad-btn-icon{
+  transform:scale(1.08) rotate(-2deg);
 }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .activity-buttons{
-    grid-template-columns:1fr;
-  }
+.actividad-btn-icon svg{
+  width:42px;
+  height:42px;
+  fill:var(--orange);
 }
-</style>
+
+    .actividad-btn-icon svg{
+      width:26px;
+      height:26px;
+      fill:var(--orange);
+    }
+
+    .actividad-btn h3{
+      margin:0 0 6px;
+      font-size:20px;
+      color:var(--orange2);
+      text-align:left;
+      position:relative;
+      z-index:1;
+    }
+
+    .actividad-btn p{
+      margin:10px 0 0;
+      font-size:13.5px;
+      line-height:1.6;
+      color:var(--muted);
+      text-align:left;
+      position:relative;
+      z-index:1;
+      max-width:90%;
+    }
+
+    /* TESTIMONIOS */
+    .testimonials{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:16px;
+      margin-top:28px;
+    }
+
+    blockquote{
+      margin:0;
+      padding:18px;
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.03);
+      border:1px solid var(--line);
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 14px 40px rgba(0,0,0,.25);
+      transition:transform .22s ease, border-color .22s ease;
+    }
+
+    blockquote:hover{
+      transform:translateY(-5px);
+      border-color:rgba(255,122,0,.22);
+    }
+
+    blockquote::before{
+      content:"“";
+      position:absolute;
+      left:14px;
+      top:6px;
+      font-size:64px;
+      color:rgba(255,255,255,.08);
+      font-weight:900;
+    }
+
+    blockquote p{
+      margin:0;
+      color:var(--muted);
+      font-size:13.5px;
+      padding-left:14px;
+      line-height:1.6;
+    }
+
+    blockquote footer{
+      margin-top:10px;
+      color:rgba(255,255,255,.9);
+      font-size:12px;
+      font-weight:900;
+      padding-left:14px;
+    }
+
+    footer{
+      padding:26px 0 40px;
+      border-top:1px solid var(--line);
+      color:var(--muted2);
+      font-size:12px;
+      margin-top:20px;
+      background:linear-gradient(180deg, transparent, rgba(255,255,255,.01));
+    }
+
+    .footer-grid{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+
+    /* MODAL GENERAL */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.86);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:9999;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .3s ease;
+      backdrop-filter:blur(8px);
+    }
+
+    .modal.active{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .modal-box{
+      position:relative;
+      width:min(1000px, 95vw);
+      max-height:90vh;
+      animation:zoomIn .3s ease;
+    }
+
+    .modal-img{
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:90vh;
+      object-fit:contain;
+      border-radius:18px;
+      box-shadow:0 20px 60px rgba(0,0,0,.6);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .modal-close{
+      position:absolute;
+      top:-14px;
+      right:-14px;
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      border:none;
+      background:linear-gradient(135deg, var(--orange), var(--orange2));
+      color:#111;
+      font-size:20px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 10px 30px rgba(255,122,0,.35);
+      transition:transform .2s ease, filter .2s ease;
+      z-index:2;
+    }
+
+    .modal-close:hover{
+      transform:scale(1.08);
+      filter:brightness(1.04);
+    }
+
+    /* MODAL ACTIVIDADES */
+    .activity-modal-box{
+      position:relative;
+      width:min(1080px, 96vw);
+      max-height:92vh;
+      overflow:auto;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)),
+        radial-gradient(700px 240px at 50% 0%, rgba(255,122,0,.10), transparent 55%),
+        #101010;
+      box-shadow:0 26px 80px rgba(0,0,0,.55);
+      animation:zoomIn .3s ease;
+    }
+
+    .activity-modal-grid{
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:0;
+      min-height:640px;
+    }
+
+    .activity-modal-content{
+      padding:34px 30px 28px;
+      position:relative;
+    }
+
+    .activity-modal-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.09);
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:16px;
+    }
+
+    .activity-modal-title{
+      font-size:34px;
+      line-height:1;
+      margin:0 0 12px;
+      font-weight:950;
+      text-transform:uppercase;
+    }
+
+    .activity-modal-title span{
+      color:var(--orange);
+    }
+
+    .activity-modal-text{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.7;
+      margin:0 0 18px;
+    }
+
+    .activity-highlights{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .highlight{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+    }
+
+    .highlight-mark{
+      width:30px;
+      height:30px;
+      border-radius:10px;
+      flex-shrink:0;
+      display:grid;
+      place-items:center;
+      background:rgba(255,122,0,.12);
+      border:1px solid rgba(255,122,0,.22);
+      color:var(--orange);
+      font-weight:900;
+    }
+
+    .highlight strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:14px;
+    }
+
+    .highlight p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    .activity-modal-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .activity-modal-media{
+      border-left:1px solid rgba(255,255,255,.06);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        #0f0f10;
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .carousel{
+      position:relative;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:#0b0b0b;
+      min-height:380px;
+      box-shadow:0 18px 50px rgba(0,0,0,.28);
+    }
+
+    .carousel-track{
+      display:flex;
+      width:100%;
+      height:100%;
+      transition:transform .45s ease;
+    }
+
+    .carousel-slide{
+      min-width:100%;
+      position:relative;
+      min-height:380px;
+    }
+
+    .carousel-slide img{
+      width:100%;
+      height:380px;
+      object-fit:cover;
+    }
+
+    .carousel-caption{
+      position:absolute;
+      left:16px;
+      right:16px;
+      bottom:16px;
+      padding:14px;
+      border-radius:16px;
+      background:rgba(0,0,0,.50);
+      backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.08);
+      color:#fff;
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    .carousel-controls{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .carousel-nav{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    .carousel-btn{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:#fff;
+      cursor:pointer;
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .carousel-btn:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,122,0,.28);
+      background:rgba(255,122,0,.10);
+    }
+
+    .carousel-dots{
+      display:flex;
+      gap:8px;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .carousel-dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      border:none;
+      background:rgba(255,255,255,.24);
+      cursor:pointer;
+      transition:transform .18s ease, background .18s ease;
+      padding:0;
+    }
+
+    .carousel-dot.active{
+      background:var(--orange);
+      transform:scale(1.18);
+    }
+
+    .media-note{
+      padding:14px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    /* REVEAL */
+    .reveal{
+      opacity:0;
+      transform:translateY(42px);
+      transition:
+        opacity .8s cubic-bezier(.2,.65,.2,1),
+        transform .8s cubic-bezier(.2,.65,.2,1);
+      will-change:opacity, transform;
+    }
+
+    .reveal-left{
+      opacity:0;
+      transform:translateX(-48px);
+      transition:
+        opacity .8s cubic-bezier(.2,.65,.2,1),
+        transform .8s cubic-bezier(.2,.65,.2,1);
+      will-change:opacity, transform;
+    }
+
+    .reveal-right{
+      opacity:0;
+      transform:translateX(48px);
+      transition:
+        opacity .8s cubic-bezier(.2,.65,.2,1),
+        transform .8s cubic-bezier(.2,.65,.2,1);
+      will-change:opacity, transform;
+    }
+
+    .reveal-scale{
+      opacity:0;
+      transform:scale(.92);
+      transition:
+        opacity .8s cubic-bezier(.2,.65,.2,1),
+        transform .8s cubic-bezier(.2,.65,.2,1);
+      will-change:opacity, transform;
+    }
+
+    .reveal.show,
+    .reveal-left.show,
+    .reveal-right.show,
+    .reveal-scale.show{
+      opacity:1;
+      transform:none;
+    }
+
+    .delay-1{ transition-delay:.08s; }
+    .delay-2{ transition-delay:.16s; }
+    .delay-3{ transition-delay:.24s; }
+    .delay-4{ transition-delay:.32s; }
+    .delay-5{ transition-delay:.40s; }
+    .delay-6{ transition-delay:.48s; }
+
+    @keyframes zoomIn{
+      from{
+        transform:scale(.92);
+        opacity:0;
+      }
+      to{
+        transform:scale(1);
+        opacity:1;
+      }
+    }
+
+    @media (max-width:980px){
+      .hero-grid{
+        grid-template-columns:1fr;
+        min-height:auto;
+        padding:36px 20px 28px;
+      }
+
+      .hero-side{
+        min-height:180px;
+        align-items:flex-end;
+        justify-content:center;
+      }
+
+      .hero-badge{
+        position:static;
+        margin-top:18px;
+        width:max-content;
+      }
+
+      .quick-stats{
+        grid-template-columns:1fr;
+        max-width:360px;
+      }
+
+      .mini-gallery{
+        grid-template-columns:1fr;
+      }
+
+      .activity-modal-grid{
+        grid-template-columns:1fr;
+      }
+
+      .activity-modal-media{
+        border-left:none;
+        border-top:1px solid rgba(255,255,255,.06);
+      }
+    }
+
+    @media (max-width:920px){
+      nav ul{
+        justify-content:center;
+      }
+
+      .cards,
+      .testimonials,
+      .activity-buttons{
+        grid-template-columns:1fr;
+      }
+
+      .brand{
+        min-width:unset;
+      }
+    }
+
+    @media (max-width:640px){
+      .nav{
+        flex-direction:column;
+      }
+
+      .hero-card{
+        min-height:auto;
+      }
+
+      .hero-top{
+        justify-content:center;
+      }
+
+      .hero-copy{
+        text-align:center;
+      }
+
+      .hero-actions{
+        justify-content:center;
+      }
+
+      .pill{
+        font-size:11px;
+        text-align:center;
+      }
+
+      .shape.plate{
+        width:92px;
+        height:92px;
+      }
+
+      .shape.dumbbell{
+        width:165px;
+        height:56px;
+      }
+
+      .shape.dumbbell::before{
+        left:30px;
+        right:30px;
+        top:23px;
+        height:10px;
+      }
+
+      .shape.dumbbell .w{
+        top:10px;
+        height:36px;
+      }
+
+      .shape-bar{
+        width:190px;
+      }
+
+      .modal-close{
+        top:10px;
+        right:10px;
+      }
+
+      .activity-modal-content{
+        padding:28px 18px 20px;
+      }
+
+      .activity-modal-media{
+        padding:18px;
+      }
+
+      .activity-modal-title{
+        font-size:28px;
+      }
+
+      .carousel-slide img,
+      .carousel-slide{
+        height:280px;
+        min-height:280px;
+      }
+
+      .brand-photo{
+        width:38px;
+        height:38px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *,
+      *::before,
+      *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+      }
+
+      .reveal,
+      .reveal-left,
+      .reveal-right,
+      .reveal-scale{
+        opacity:1 !important;
+        transform:none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <img
+          class="brand-photo"
+          src="https://i.ibb.co/PZNMTqXn/Whats-App-Image-2026-03-02-at-23-34-11.jpg"
+          alt="Guía & Motivación Gym"
+        >
+        <b>Guía <span>&</span> Motivación Gym</b>
+      </a>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>GUÍA <span>&</span> MOTIVACIÓN GYM</h1>
-  <p>Entrená con disciplina. Transformá tu cuerpo.</p>
-  <button class="btn primary">EMPEZAR HOY</button>
-  <button class="btn ghost" onclick="openHorarios()">VER HORARIOS</button>
-</section>
-
-<!-- ACTIVIDADES -->
-<section class="section">
-  <h2>Actividades</h2>
-
-  <div class="activity-buttons">
-    
-    <div class="actividad-btn" onclick="openActividad('musculacion')">
-      <h3>Musculación</h3>
-      <p>Fuerza, masa muscular y progreso real.</p>
+      <nav aria-label="Menú principal">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#informacion">Información</a></li>
+          <li><a href="#actividades">Actividades</a></li>
+          <li><a href="#suplementos">Suplementos</a></li>
+          <li><a href="#opiniones">Opiniones</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <div class="actividad-btn" onclick="openActividad('funcional')">
-      <h3>Funcional</h3>
-      <p>Movimiento, energía y resistencia.</p>
+  <main id="inicio" class="hero">
+    <div class="wrap">
+      <div class="hero-card">
+        <div class="gym-shapes" aria-hidden="true">
+          <div class="shape plate shape-1 parallax" data-speed="0.12"></div>
+          <div class="shape plate shape-2 parallax" data-speed="-0.08"></div>
+          <div class="shape dumbbell shape-3 parallax" data-speed="0.16">
+            <div class="w w1"></div>
+            <div class="w w2"></div>
+            <div class="w w3"></div>
+            <div class="w w4"></div>
+          </div>
+          <div class="shape-bar shape-4 parallax" data-speed="-0.14"></div>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-copy reveal-left show">
+            <div class="hero-top">
+              <div class="left">
+                <span class="pill">
+                  <span class="dot"></span>
+                  Resultados reales • Ambiente motivador • Seguimiento
+                </span>
+              </div>
+            </div>
+
+            <h1>GUÍA <span class="amp">&</span> MOTIVACIÓN GYM</h1>
+
+            <p class="hero-sub">
+              Entrená con disciplina. Transformá tu cuerpo.
+              <small>Más enfoque, más constancia y menos excusas. El cuerpo no cambia con “mañana arranco”.</small>
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="https://wa.me/5492615125111?text=Hola,%20quiero%20info%20del%20gym" target="_blank" rel="noopener">
+                EMPEZAR HOY
+              </a>
+
+              <button type="button" class="btn ghost" onclick="abrirHorarios()">
+                VER HORARIOS
+              </button>
+            </div>
+
+            <div class="quick-stats">
+              <div class="stat reveal delay-1">
+                <strong>Entrenamiento</strong>
+                <span>Con estructura y objetivo</span>
+              </div>
+              <div class="stat reveal delay-2">
+                <strong>Ambiente</strong>
+                <span>Motivador y enfocado</span>
+              </div>
+              <div class="stat reveal delay-3">
+                <strong>Seguimiento</strong>
+                <span>Para progresar en serio</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-side reveal-right show">
+            <div class="hero-badge">
+              <strong>WhatsApp directo</strong>
+              <span>+54 9 261 512 5111</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </main>
 
-    <div class="actividad-btn" onclick="openActividad('pilates')">
-      <h3>Pilates</h3>
-      <p>Equilibrio, postura y bienestar.</p>
+  <section id="informacion" class="section-glow">
+    <div class="wrap">
+      <h2 class="title reveal">Más que un gym, <span>un sistema para progresar</span></h2>
+      <div class="divider reveal delay-1"></div>
+
+      <p class="sub reveal delay-2">
+        En Guía & Motivación no venís solo a entrenar: venís a mejorar, avanzar y sostener resultados reales con acompañamiento, constancia y una estructura clara.
+      </p>
+
+      <div class="cards">
+        <article class="card reveal delay-1">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M16 2H8a2 2 0 0 0-2 2v1H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V4a2 2 0 0 0-2-2zm0 3H8V4h8v1zm3 16H5V7h14v14z"/></svg>
+          </div>
+          <h3>Evaluación inicial</h3>
+          <p>Analizamos tu punto de partida para que arranques con una base clara según tu nivel y objetivo.</p>
+        </article>
+
+        <article class="card reveal delay-2">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 17h2v4H3v-4zm4-6h2v10H7V11zm4 3h2v7h-2v-7zm4-9h2v16h-2V5zm4 5h2v11h-2V10z"/></svg>
+          </div>
+          <h3>Seguimiento real</h3>
+          <p>El progreso se observa y se ajusta. La idea no es repetir por costumbre, sino avanzar con sentido.</p>
+        </article>
+
+        <article class="card reveal delay-3">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20 8h-2V6a1 1 0 0 0-1-1h-1V4a1 1 0 0 0-1-1h-2v2h1v2H10V5h1V3H9a1 1 0 0 0-1 1v1H7a1 1 0 0 0-1 1v2H4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v2a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1h2v-2h-1v-2h4v2h-1v2h2a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-2h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/></svg>
+          </div>
+          <h3>Rutinas con objetivo</h3>
+          <p>Cada entrenamiento tiene un propósito: fuerza, masa muscular, resistencia o mejora física general.</p>
+        </article>
+
+        <article class="card reveal delay-4">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.2 4.9L19 8l-3.7 3.4.9 5L12 14.7 7.8 16.4l.9-5L5 8l4.8-1.1L12 2z"/></svg>
+          </div>
+          <h3>Ambiente que impulsa</h3>
+          <p>Un lugar pensado para entrenar en serio, con energía, enfoque y ganas de progresar de verdad.</p>
+        </article>
+
+        <article class="card reveal delay-5">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 1 5 5c0 1.3-.5 2.5-1.3 3.4L22 17l-1.4 1.4-2.2-2.2V22H5v-5.8l-2.2 2.2L1.4 17l6.3-6.6A5 5 0 1 1 12 2zm-2 17h4v-2h-4v2zm0-4h4v-2h-4v2z"/></svg>
+          </div>
+          <h3>Acompañamiento</h3>
+          <p>No se trata solo de hacer ejercicios, sino de entender el proceso y entrenar con intención.</p>
+        </article>
+
+        <article class="card reveal delay-6">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M13 2L6 14h5l-1 8 7-12h-5l1-8z"/></svg>
+          </div>
+          <h3>Resultados visibles</h3>
+          <p>Cuando hay constancia, estructura y compromiso, los cambios llegan. Y sí, se notan.</p>
+        </article>
+      </div>
+
+      <div class="cta-band reveal-scale">
+        <h2><span>ACÁ NO VENÍS A PROBAR</span>, VENÍS A CAMBIAR.</h2>
+        <p style="margin:10px 0 16px; color:var(--muted);">
+          Si querés empezar en un lugar donde se entrena con guía, motivación y enfoque, este puede ser tu próximo paso.
+        </p>
+
+        <a class="btn primary"
+           href="https://wa.me/5492615125111?text=Hola,%20quiero%20empezar%20en%20el%20gym"
+           target="_blank" rel="noopener">
+          QUIERO EMPEZAR
+        </a>
+      </div>
     </div>
+  </section>
 
+  <section id="actividades" class="section-glow">
+    <div class="wrap">
+      <h2 class="title reveal">Actividades</h2>
+      <div class="divider reveal delay-1"></div>
+      <p class="sub reveal delay-2">Elegí la actividad que más vaya con vos y abrí la ficha completa.</p>
+
+      <div class="activity-buttons">
+        <button class="actividad-btn reveal delay-1" type="button" onclick="openActivityModal('musculacion')">
+          <span class="tag">POPULAR</span>
+          <div class="actividad-btn-top">
+            <div class="actividad-btn-icon">
+              <svg viewBox="0 0 24 24"><path d="M20 8h-2V6a1 1 0 0 0-1-1h-1V4a1 1 0 0 0-1-1h-2v2h1v2H10V5h1V3H9a1 1 0 0 0-1 1v1H7a1 1 0 0 0-1 1v2H4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v2a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1h2v-2h-1v-2h4v2h-1v2h2a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-2h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/></svg>
+            </div>
+            <div>
+              <h3>Musculación</h3>
+              <p>Fuerza, masa muscular y progreso real con estructura, técnica y constancia.</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="actividad-btn reveal delay-2" type="button" onclick="openActivityModal('funcional')">
+          <span class="tag">DINÁMICO</span>
+          <div class="actividad-btn-top">
+            <div class="actividad-btn-icon">
+              <svg viewBox="0 0 24 24"><path d="M7 21c-2 0-4-2-4-4 0-2.5 1.6-4.4 3.5-5.3.7-.3 1.5-.4 2.2-.3l.3-2.2c.2-1.4 1.4-2.5 2.9-2.5h1.6c1 0 1.9.5 2.4 1.3l1.1 1.7c.3.5.4 1 .4 1.5v1.6c0 .9-.4 1.8-1.1 2.4l-1.2 1.1c-.5.5-1.2.8-1.9.8H7z"/></svg>
+            </div>
+            <div>
+              <h3>Funcional</h3>
+              <p>Movimiento, resistencia y energía en sesiones activas para todo el cuerpo.</p>
+            </div>
+          </div>
+        </button>
+
+        <button class="actividad-btn reveal delay-3" type="button" onclick="openActivityModal('pilates')">
+          <span class="tag">EQUILIBRIO</span>
+          <div class="actividad-btn-top">
+            <div class="actividad-btn-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm-7 16c0-3.3 2.7-6 6-6h2c3.3 0 6 2.7 6 6v1H5v-1z"/></svg>
+            </div>
+            <div>
+              <h3>Pilates</h3>
+              <p>Postura, control corporal y bienestar con una práctica técnica y consciente.</p>
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <div class="mini-gallery">
+        <div class="gallery-card reveal-left">
+          <div class="gallery-copy">
+            <strong>Entrená en un espacio real</strong>
+            <span>Equipamiento, orden y ambiente pensado para progresar.</span>
+          </div>
+        </div>
+
+        <div class="gallery-side">
+          <div class="mini-panel reveal-right delay-1">
+            <h4>Constancia > motivación de lunes</h4>
+            <p>La motivación ayuda, pero la constancia cambia el cuerpo. Por eso la experiencia del gym tiene que invitar a volver.</p>
+          </div>
+
+          <div class="mini-panel reveal-right delay-2">
+            <h4>Entrená con criterio</h4>
+            <p>Menos improvisación, más dirección. Así es como el esfuerzo deja de ser aleatorio y empieza a dar resultados.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="suplementos" class="section-glow">
+    <div class="wrap">
+      <h2 class="title reveal">Suplementos</h2>
+      <div class="divider reveal delay-1"></div>
+      <p class="sub reveal delay-2">Un apoyo útil para acompañar entrenamiento, recuperación y alimentación.</p>
+
+      <div class="cards">
+        <article class="card reveal delay-1">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 2h10v2h-1v3.2l3.6 6.1A4 4 0 0 1 16.2 20H7.8a4 4 0 0 1-3.4-6.7L8 7.2V4H7V2zm3 2v3.7L6.1 14A2 2 0 0 0 7.8 18h8.4a2 2 0 0 0 1.7-3L14 7.7V4h-4z"/></svg>
+          </div>
+          <h3>Creatina</h3>
+          <p>Ayuda al rendimiento, la fuerza y la recuperación muscular.</p>
+        </article>
+
+        <article class="card reveal delay-2">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 3h10l1 4v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7l1-4zm2 2-.5 2h7L15 5H9z"/></svg>
+          </div>
+          <h3>Proteína Whey</h3>
+          <p>Práctica para complementar el consumo diario de proteínas y apoyar la recuperación.</p>
+        </article>
+
+        <article class="card reveal delay-3">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M13 2L6 14h5l-1 8 7-12h-5l1-8z"/></svg>
+          </div>
+          <h3>Pre-entreno</h3>
+          <p>Mayor energía y enfoque para sesiones intensas. Para entrenar despierto, no en modo ahorro.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="opiniones" class="section-glow">
+    <div class="wrap">
+      <h2 class="title reveal">Lo que dicen los alumnos</h2>
+      <div class="divider reveal delay-1"></div>
+
+      <div class="testimonials">
+        <blockquote class="reveal delay-1">
+          <p><b>Excelente ambiente</b>, me ayudó a ordenar el entrenamiento y sostenerlo.</p>
+          <footer>Alumno/a</footer>
+        </blockquote>
+
+        <blockquote class="reveal delay-2">
+          <p>Se siente la <b>motivación</b> desde que entrás. Muy buen acompañamiento.</p>
+          <footer>Alumno/a</footer>
+        </blockquote>
+
+        <blockquote class="reveal delay-3">
+          <p>Mejoré fuerza, constancia y ganas de entrenar en <b>pocas semanas</b>.</p>
+          <footer>Alumno/a</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <footer class="reveal">
+    <div class="wrap footer-grid">
+      <div>
+        <b>Guía & Motivación Gym</b>
+        <div class="soft2" style="margin-top:6px;">Disciplina, progreso y constancia.</div>
+      </div>
+      <div class="soft2">© <span id="y"></span></div>
+    </div>
+  </footer>
+
+  <!-- MODAL HORARIOS -->
+  <div id="modalHorarios" class="modal" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" type="button" onclick="cerrarHorarios()" aria-label="Cerrar">✕</button>
+      <img
+        class="modal-img"
+        src="https://i.ibb.co/GvGNP25z/1111.jpg"
+        alt="Horarios Guía & Motivación Gym"
+      />
+    </div>
   </div>
-</section>
 
-<!-- MODAL HORARIOS -->
-<div class="modal" id="horariosModal">
-  <button class="close" onclick="closeModal()">X</button>
-  <img src="https://i.ibb.co/PZNMTqXn/Whats-App-Image-2026-03-02-at-23-34-11.jpg">
-</div>
+  <!-- MODAL ACTIVIDADES -->
+  <div id="activityModal" class="modal" aria-hidden="true">
+    <div class="activity-modal-box">
+      <button class="modal-close" type="button" onclick="closeActivityModal()" aria-label="Cerrar">✕</button>
 
-<!-- MODAL ACTIVIDAD -->
-<div class="modal" id="actividadModal">
-  <div class="modal-box">
-    <button class="close" onclick="closeModal()">X</button>
-    <h2 id="titulo"></h2>
-    <p id="descripcion"></p>
+      <div class="activity-modal-grid">
+        <div class="activity-modal-content">
+          <div class="activity-modal-tag" id="activityTag">Clase destacada</div>
+          <h3 class="activity-modal-title" id="activityTitle">Actividad</h3>
+          <p class="activity-modal-text" id="activityText"></p>
 
-    <div class="carousel">
-      <img id="imgActividad" src="">
+          <div class="activity-highlights" id="activityHighlights"></div>
+
+          <div class="activity-modal-actions">
+            <a id="activityWhatsApp" class="btn primary" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+            <button class="btn ghost" type="button" onclick="closeActivityModal()">Cerrar</button>
+          </div>
+        </div>
+
+        <div class="activity-modal-media">
+          <div class="carousel" id="activityCarousel">
+            <div class="carousel-track" id="carouselTrack"></div>
+          </div>
+
+          <div class="carousel-controls">
+            <div class="carousel-nav">
+              <button class="carousel-btn" type="button" onclick="prevSlide()">‹</button>
+              <button class="carousel-btn" type="button" onclick="nextSlide()">›</button>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+          </div>
+
+          <div class="media-note" id="activityNote"></div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
 
-function openHorarios(){
-  document.getElementById("horariosModal").classList.add("active");
-}
+    /* MODAL HORARIOS */
+    const modalHorarios = document.getElementById("modalHorarios");
 
-function closeModal(){
-  document.querySelectorAll(".modal").forEach(m=>m.classList.remove("active"));
-}
-
-function openActividad(tipo){
-  const data={
-    musculacion:{
-      titulo:"Musculación",
-      desc:"Entrenamiento de fuerza con máquinas y peso libre.",
-      img:"https://i.ibb.co/6Rm5Tbk3/GYM-imagen2.jpg"
-    },
-    funcional:{
-      titulo:"Funcional",
-      desc:"Entrenamiento dinámico y quema grasa.",
-      img:"https://i.ibb.co/ZYW3VTp/brown-brim.png"
-    },
-    pilates:{
-      titulo:"Pilates",
-      desc:"Control corporal, postura y equilibrio.",
-      img:"https://i.ibb.co/7zQ6z3f/sample.jpg"
+    function abrirHorarios(){
+      modalHorarios.classList.add("active");
+      modalHorarios.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
     }
-  };
 
-  document.getElementById("titulo").innerText=data[tipo].titulo;
-  document.getElementById("descripcion").innerText=data[tipo].desc;
-  document.getElementById("imgActividad").src=data[tipo].img;
+    function cerrarHorarios(){
+      modalHorarios.classList.remove("active");
+      modalHorarios.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
 
-  document.getElementById("actividadModal").classList.add("active");
-}
+    modalHorarios.addEventListener("click", function(e){
+      if(e.target === modalHorarios){
+        cerrarHorarios();
+      }
+    });
 
-</script>
+    /* REVEAL */
+    const revealElements = document.querySelectorAll(
+      ".reveal, .reveal-left, .reveal-right, .reveal-scale"
+    );
 
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.14,
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    revealElements.forEach(el => {
+      if(!el.classList.contains("show")){
+        observer.observe(el);
+      }
+    });
+
+    /* PARALLAX */
+    const parallaxItems = document.querySelectorAll(".parallax");
+    let ticking = false;
+
+    function updateParallax(){
+      const scrollY = window.scrollY;
+      parallaxItems.forEach(item => {
+        const speed = parseFloat(item.dataset.speed || "0.1");
+        const moveY = scrollY * speed;
+        item.style.transform = `translate3d(0, ${moveY}px, 0)`;
+      });
+      ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if(!ticking){
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    });
+
+    updateParallax();
+
+    /* MODAL ACTIVIDADES + CARRUSEL */
+    const activityModal = document.getElementById("activityModal");
+    const activityTag = document.getElementById("activityTag");
+    const activityTitle = document.getElementById("activityTitle");
+    const activityText = document.getElementById("activityText");
+    const activityHighlights = document.getElementById("activityHighlights");
+    const activityNote = document.getElementById("activityNote");
+    const activityWhatsApp = document.getElementById("activityWhatsApp");
+    const carouselTrack = document.getElementById("carouselTrack");
+    const carouselDots = document.getElementById("carouselDots");
+
+    let currentSlides = [];
+    let currentIndex = 0;
+    let carouselInterval = null;
+
+    const activitiesData = {
+      musculacion: {
+        tag: "Fuerza • Hipertrofia • Técnica",
+        title: 'MUSCULACIÓN <span>INTELIGENTE</span>',
+        text: 'La musculación está pensada para quienes quieren construir fuerza, ganar masa muscular y progresar con una rutina clara. No se trata de venir a levantar por levantar: trabajamos con estructura, técnica y evolución real.',
+        note: 'Ideal para personas que quieren mejorar composición corporal, verse mejor, sentirse más fuertes y entrenar con una base sólida.',
+        whatsapp: 'https://wa.me/5492615125111?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Musculaci%C3%B3n',
+        highlights: [
+          {
+            title: 'Progresión guiada',
+            text: 'Rutinas con lógica, carga progresiva y seguimiento para no estancarte.'
+          },
+          {
+            title: 'Trabajo por objetivos',
+            text: 'Se adapta a fuerza, hipertrofia, descenso de grasa o mejora general.'
+          },
+          {
+            title: 'Técnica y control',
+            text: 'Menos improvisación, más calidad en cada ejercicio.'
+          }
+        ],
+        slides: [
+          {
+            img: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80',
+            caption: 'Espacio de musculación orientado a fuerza, control y progreso.'
+          },
+          {
+            img: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80',
+            caption: 'Entrenamiento con peso libre y máquinas para trabajar todo el cuerpo.'
+          },
+          {
+            img: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=80',
+            caption: 'Sesiones enfocadas en técnica, constancia y evolución real.'
+          }
+        ]
+      },
+      funcional: {
+        tag: "Movimiento • Resistencia • Energía",
+        title: 'FUNCIONAL <span>DINÁMICO</span>',
+        text: 'El entrenamiento funcional combina ejercicios dinámicos, circuitos y movimientos globales para mejorar resistencia, coordinación, movilidad y potencia. Es ideal para quienes buscan entrenar con intensidad, variedad y mucha energía.',
+        note: 'Excelente para quienes quieren quemar calorías, ganar condición física y salir de la rutina clásica sin perder enfoque.',
+        whatsapp: 'https://wa.me/5492615125111?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Funcional',
+        highlights: [
+          {
+            title: 'Sesiones activas',
+            text: 'Circuitos y ejercicios dinámicos que mantienen al cuerpo en movimiento.'
+          },
+          {
+            title: 'Mejora global',
+            text: 'Trabajás resistencia, coordinación, agilidad y estabilidad en conjunto.'
+          },
+          {
+            title: 'Más energía',
+            text: 'Entrenamientos intensos y entretenidos para salir renovado.'
+          }
+        ],
+        slides: [
+          {
+            img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80',
+            caption: 'Circuitos funcionales para mejorar rendimiento y condición física.'
+          },
+          {
+            img: 'https://images.unsplash.com/photo-1434608519344-49d77a699e1d?auto=format&fit=crop&w=1200&q=80',
+            caption: 'Trabajo con implementos, movilidad y ejercicios integrados.'
+          },
+          {
+            img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80',
+            caption: 'Ideal para quienes disfrutan entrenar con intensidad y variedad.'
+          }
+        ]
+      },
+      pilates: {
+        tag: "Postura • Control • Bienestar",
+        title: 'PILATES <span>CON PROPÓSITO</span>',
+        text: 'Pilates ayuda a mejorar postura, movilidad, control corporal y conexión con el movimiento. Es una actividad muy valorada por quienes buscan bienestar físico, fortalecer la zona media y trabajar el cuerpo con precisión.',
+        note: 'Muy recomendable para personas que quieren mejorar postura, estabilidad, flexibilidad y entrenar desde un enfoque más técnico y consciente.',
+        whatsapp: 'https://wa.me/5492615125111?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20Pilates',
+        highlights: [
+          {
+            title: 'Mejor postura',
+            text: 'Favorece alineación corporal, control y una mejor conciencia del movimiento.'
+          },
+          {
+            title: 'Core fuerte',
+            text: 'Gran trabajo de zona media, estabilidad y control del cuerpo.'
+          },
+          {
+            title: 'Bienestar integral',
+            text: 'Combina técnica, respiración y movimiento para entrenar con equilibrio.'
+          }
+        ],
+        slides: [
+          {
+            img: 'https://images.unsplash.com/photo-1518617840859-acd4d3d94f0d?auto=format&fit=crop&w=1200&q=80',
+            caption: 'Pilates enfocado en control, respiración y postura.'
+          },
+          {
+            img: 'https://images.unsplash.com/photo-1599447421388-58f0a0b2b8a4?auto=format&fit=crop&w=1200&q=80',
+            caption: 'Trabajo técnico para fortalecer, estabilizar y mejorar movilidad.'
+          },
+          {
+            img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80',
+            caption: 'Una actividad ideal para sentirse mejor y moverse mejor.'
+          }
+        ]
+      }
+    };
+
+    function buildHighlights(items){
+      activityHighlights.innerHTML = items.map((item, index) => `
+        <div class="highlight">
+          <div class="highlight-mark">${index + 1}</div>
+          <div>
+            <strong>${item.title}</strong>
+            <p>${item.text}</p>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function buildCarousel(slides){
+      currentSlides = slides;
+      currentIndex = 0;
+
+      carouselTrack.innerHTML = slides.map(slide => `
+        <div class="carousel-slide">
+          <img src="${slide.img}" alt="">
+          <div class="carousel-caption">${slide.caption}</div>
+        </div>
+      `).join("");
+
+      carouselDots.innerHTML = slides.map((_, index) => `
+        <button class="carousel-dot ${index === 0 ? 'active' : ''}" type="button" onclick="goToSlide(${index})" aria-label="Ir a imagen ${index + 1}"></button>
+      `).join("");
+
+      updateCarousel();
+      startCarousel();
+    }
+
+    function updateCarousel(){
+      carouselTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+      const dots = carouselDots.querySelectorAll(".carousel-dot");
+      dots.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentIndex);
+      });
+    }
+
+    function nextSlide(){
+      if(!currentSlides.length) return;
+      currentIndex = (currentIndex + 1) % currentSlides.length;
+      updateCarousel();
+      restartCarousel();
+    }
+
+    function prevSlide(){
+      if(!currentSlides.length) return;
+      currentIndex = (currentIndex - 1 + currentSlides.length) % currentSlides.length;
+      updateCarousel();
+      restartCarousel();
+    }
+
+    function goToSlide(index){
+      currentIndex = index;
+      updateCarousel();
+      restartCarousel();
+    }
+
+    function startCarousel(){
+      clearInterval(carouselInterval);
+      carouselInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % currentSlides.length;
+        updateCarousel();
+      }, 4500);
+    }
+
+    function restartCarousel(){
+      startCarousel();
+    }
+
+    function openActivityModal(key){
+      const data = activitiesData[key];
+      if(!data) return;
+
+      activityTag.textContent = data.tag;
+      activityTitle.innerHTML = data.title;
+      activityText.textContent = data.text;
+      activityNote.textContent = data.note;
+      activityWhatsApp.href = data.whatsapp;
+
+      buildHighlights(data.highlights);
+      buildCarousel(data.slides);
+
+      activityModal.classList.add("active");
+      activityModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeActivityModal(){
+      activityModal.classList.remove("active");
+      activityModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      clearInterval(carouselInterval);
+    }
+
+    activityModal.addEventListener("click", function(e){
+      if(e.target === activityModal){
+        closeActivityModal();
+      }
+    });
+
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape"){
+        if(modalHorarios.classList.contains("active")) cerrarHorarios();
+        if(activityModal.classList.contains("active")) closeActivityModal();
+      }
+    });
+  </script>
 </body>
 </html>

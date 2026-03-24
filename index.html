@@ -8,7 +8,9 @@
   <style>
     :root{
       --bg:#090909;
-      --bg2:#0f0f10;
+      --bg2:#101010;
+      --panel:#121212;
+      --panel2:#171717;
       --text:#ffffff;
       --muted:rgba(255,255,255,.82);
       --muted2:rgba(255,255,255,.62);
@@ -18,8 +20,8 @@
       --orange2:#ff9b34;
       --orange3:#ffb55f;
       --shadow:0 20px 70px rgba(0,0,0,.65);
-      --radius:18px;
-      --max:1120px;
+      --radius:20px;
+      --max:1140px;
     }
 
     *{
@@ -33,11 +35,11 @@
     }
 
     body{
-      font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(1200px 700px at 50% -50%, rgba(255,122,0,.18), transparent 65%),
-        radial-gradient(900px 520px at 10% 20%, rgba(255,122,0,.08), transparent 60%),
+        radial-gradient(1200px 700px at 50% -50%, rgba(255,122,0,.16), transparent 65%),
+        radial-gradient(900px 520px at 10% 20%, rgba(255,122,0,.07), transparent 60%),
         linear-gradient(180deg, #0a0a0a 0%, #090909 100%);
       overflow-x:hidden;
     }
@@ -85,7 +87,7 @@
       position:absolute;
       inset:auto 0 0 0;
       height:180px;
-      background:radial-gradient(closest-side, rgba(255,122,0,.09), transparent 70%);
+      background:radial-gradient(closest-side, rgba(255,122,0,.08), transparent 70%);
       z-index:0;
       pointer-events:none;
       transform:translateY(25%);
@@ -111,33 +113,27 @@
     .brand{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:12px;
       min-width:240px;
     }
 
-    .logo{
-      width:34px;
-      height:34px;
-      border-radius:10px;
-      background:linear-gradient(135deg, var(--orange), var(--orange2));
-      box-shadow:0 14px 35px rgba(255,122,0,.22);
-      position:relative;
-      overflow:hidden;
-      animation:floatLogo 3.5s ease-in-out infinite;
-    }
-
-    .logo::after{
-      content:"";
-      position:absolute;
-      inset:-50%;
-      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 55%);
-      transform:rotate(25deg);
+    .brand-photo{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      object-fit:cover;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:
+        0 0 0 2px rgba(255,122,0,.10),
+        0 14px 30px rgba(255,122,0,.18);
+      flex-shrink:0;
     }
 
     .brand b{
       font-weight:900;
       letter-spacing:.2px;
       font-size:14px;
+      line-height:1.15;
     }
 
     .brand b span{
@@ -229,13 +225,12 @@
     .btn.primary{
       background:linear-gradient(135deg, var(--orange), var(--orange2));
       color:#121212;
-      box-shadow:0 16px 45px rgba(255,122,0,.22);
-      animation:pulseGlow 2.8s ease-in-out infinite;
+      box-shadow:0 16px 45px rgba(255,122,0,.20);
     }
 
     .btn.primary:hover{
       filter:brightness(1.05);
-      box-shadow:0 18px 50px rgba(255,122,0,.34);
+      box-shadow:0 18px 50px rgba(255,122,0,.32);
     }
 
     .btn.ghost{
@@ -250,22 +245,21 @@
     }
 
     .hero{
-      padding:26px 0 20px;
+      padding:26px 0 26px;
       position:relative;
     }
 
     .hero-card{
-      border-radius:28px;
+      border-radius:30px;
       overflow:hidden;
       border:1px solid var(--line);
       box-shadow:var(--shadow);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.24), rgba(0,0,0,.62)),
-        linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.48) 48%, rgba(0,0,0,.30) 100%),
+        linear-gradient(180deg, rgba(0,0,0,.22), rgba(0,0,0,.62)),
+        linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.48) 48%, rgba(0,0,0,.26) 100%),
         url("https://i.ibb.co/m5Y79gBm/3152c6db-4710-46f6-9e69-cfcf5f133600.png") center/cover no-repeat;
-      min-height:560px;
+      min-height:590px;
       position:relative;
-      animation:fadeUp .9s ease;
       isolation:isolate;
     }
 
@@ -274,8 +268,8 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(700px 300px at 18% 15%, rgba(255,122,0,.14), transparent 55%),
-        radial-gradient(900px 420px at 80% 20%, rgba(255,122,0,.12), transparent 55%);
+        radial-gradient(700px 300px at 18% 15%, rgba(255,122,0,.12), transparent 55%),
+        radial-gradient(900px 420px at 80% 20%, rgba(255,122,0,.10), transparent 55%);
       z-index:0;
       pointer-events:none;
     }
@@ -284,26 +278,26 @@
       content:"";
       position:absolute;
       inset:0;
-      background:radial-gradient(950px 520px at 70% 25%, rgba(255,122,0,.16), transparent 62%);
+      background:radial-gradient(950px 520px at 70% 25%, rgba(255,122,0,.14), transparent 62%);
       pointer-events:none;
-      animation:heroGlow 6s ease-in-out infinite alternate;
       z-index:0;
     }
 
     .hero-grid{
       position:relative;
-      z-index:1;
-      min-height:560px;
+      z-index:2;
+      min-height:590px;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
+      grid-template-columns:1.08fr .92fr;
       align-items:center;
-      gap:20px;
-      padding:38px 26px;
+      gap:26px;
+      padding:42px 28px;
     }
 
     .hero-copy{
       position:relative;
       z-index:2;
+      max-width:720px;
     }
 
     .hero-top{
@@ -311,7 +305,7 @@
       align-items:center;
       justify-content:flex-start;
       gap:12px;
-      margin-bottom:26px;
+      margin-bottom:24px;
     }
 
     .hero-top .left{
@@ -330,8 +324,7 @@
       border-radius:999px;
       background:rgba(255,255,255,.06);
       border:1px solid rgba(255,255,255,.10);
-      backdrop-filter:blur(6px);
-      animation:softFloat 4s ease-in-out infinite;
+      backdrop-filter:blur(8px);
     }
 
     .dot{
@@ -344,13 +337,12 @@
 
     h1{
       margin:0 0 14px;
-      font-size:clamp(34px, 5vw, 62px);
-      line-height:.98;
+      font-size:clamp(36px, 5vw, 66px);
+      line-height:.96;
       font-weight:950;
       letter-spacing:.6px;
       text-transform:uppercase;
       text-shadow:0 14px 50px rgba(0,0,0,.55);
-      animation:fadeUp 1s ease;
       max-width:900px;
     }
 
@@ -361,11 +353,10 @@
 
     .hero-sub{
       margin:0 0 12px;
-      max-width:640px;
+      max-width:620px;
       color:var(--muted);
       font-size:clamp(15px, 1.9vw, 19px);
-      animation:fadeUp 1.15s ease;
-      line-height:1.45;
+      line-height:1.5;
     }
 
     .hero-sub small{
@@ -380,189 +371,24 @@
       gap:12px;
       justify-content:flex-start;
       flex-wrap:wrap;
-      margin-top:22px;
-      animation:fadeUp 1.45s ease;
-    }
-
-    .hero-side{
-      position:relative;
-      min-height:420px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      z-index:1;
-    }
-
-    .equipment-scene{
-      position:relative;
-      width:min(420px, 100%);
-      height:420px;
-      pointer-events:none;
-    }
-
-    .float-item{
-      position:absolute;
-      filter:drop-shadow(0 18px 26px rgba(0,0,0,.42));
-      opacity:.95;
-    }
-
-    .plate{
-      width:120px;
-      height:120px;
-      border-radius:50%;
-      border:10px solid rgba(255,122,0,.95);
-      background:
-        radial-gradient(circle at center, transparent 0 22px, rgba(255,255,255,.06) 22px 28px, transparent 28px),
-        radial-gradient(circle at 35% 30%, rgba(255,255,255,.18), transparent 45%),
-        linear-gradient(145deg, rgba(255,122,0,.14), rgba(255,255,255,.03));
-      box-shadow:
-        inset 0 0 0 8px rgba(0,0,0,.34),
-        inset 0 0 22px rgba(255,122,0,.12),
-        0 0 24px rgba(255,122,0,.14);
-      animation:spinPlate 16s linear infinite, floatA 6s ease-in-out infinite;
-    }
-
-    .plate::before,
-    .plate::after{
-      content:"";
-      position:absolute;
-      inset:18px;
-      border-radius:50%;
-      border:2px solid rgba(255,122,0,.30);
-    }
-
-    .plate-left{
-      top:30px;
-      left:20px;
-      transform:scale(.95);
-    }
-
-    .plate-right{
-      top:220px;
-      right:12px;
-      width:96px;
-      height:96px;
-      animation:spinPlateReverse 13s linear infinite, floatB 5.6s ease-in-out infinite;
-    }
-
-    .dumbbell{
-      width:210px;
-      height:72px;
-      animation:floatC 5.4s ease-in-out infinite;
-    }
-
-    .dumbbell .bar{
-      position:absolute;
-      left:38px;
-      right:38px;
-      top:30px;
-      height:12px;
-      border-radius:999px;
-      background:linear-gradient(180deg, #e7e7e7, #8b8b8b);
-      box-shadow:inset 0 0 6px rgba(0,0,0,.45);
-    }
-
-    .dumbbell .weight{
-      position:absolute;
-      top:14px;
-      width:30px;
-      height:44px;
-      border-radius:8px;
-      background:linear-gradient(180deg, #1d1d1f, #090909);
-      border:2px solid rgba(255,122,0,.42);
-      box-shadow:0 0 14px rgba(255,122,0,.18);
-    }
-
-    .dumbbell .weight.w1{ left:0; }
-    .dumbbell .weight.w2{ left:22px; width:22px; }
-    .dumbbell .weight.w3{ right:22px; width:22px; }
-    .dumbbell .weight.w4{ right:0; }
-
-    .dumbbell-top{
-      right:70px;
-      top:55px;
-      transform:rotate(-18deg);
-    }
-
-    .barbell-line{
-      width:290px;
-      height:24px;
-      animation:floatD 7s ease-in-out infinite;
-    }
-
-    .barbell-line::before{
-      content:"";
-      position:absolute;
-      inset:8px 36px;
-      border-radius:999px;
-      background:linear-gradient(180deg, #d9d9d9, #7e7e7e);
-      box-shadow:inset 0 0 6px rgba(0,0,0,.45);
-    }
-
-    .barbell-line .plate-mini{
-      position:absolute;
-      top:0;
-      width:24px;
-      height:24px;
-      border-radius:50%;
-      border:4px solid var(--orange);
-      background:rgba(255,255,255,.04);
-    }
-
-    .barbell-line .pm1{ left:0; }
-    .barbell-line .pm2{ left:14px; }
-    .barbell-line .pm3{ right:14px; }
-    .barbell-line .pm4{ right:0; }
-
-    .barbell-pos{
-      left:80px;
-      bottom:84px;
-      transform:rotate(12deg);
-      opacity:.85;
-    }
-
-    .hero-badge{
-      position:absolute;
-      right:24px;
-      bottom:24px;
-      background:rgba(0,0,0,.58);
-      border:1px solid rgba(255,122,0,.35);
-      border-radius:16px;
-      padding:14px 16px;
-      color:#fff;
-      backdrop-filter:blur(8px);
-      box-shadow:0 12px 30px rgba(0,0,0,.30);
-      animation:softFloat 4s ease-in-out infinite;
-      z-index:3;
-    }
-
-    .hero-badge strong{
-      display:block;
-      color:var(--orange);
-      font-size:15px;
-      margin-bottom:4px;
-    }
-
-    .hero-badge span{
-      font-size:13px;
-      color:var(--muted);
+      margin-top:24px;
     }
 
     .quick-stats{
       display:grid;
       grid-template-columns:repeat(3, 1fr);
       gap:14px;
-      margin-top:22px;
-      max-width:620px;
+      margin-top:24px;
+      max-width:640px;
     }
 
     .stat{
-      background:rgba(255,255,255,.04);
+      background:rgba(255,255,255,.045);
       border:1px solid rgba(255,255,255,.08);
-      border-radius:16px;
+      border-radius:18px;
       padding:14px 12px;
       text-align:center;
-      backdrop-filter:blur(6px);
+      backdrop-filter:blur(8px);
       box-shadow:0 12px 34px rgba(0,0,0,.18);
       transition:transform .22s ease, border-color .22s ease;
     }
@@ -584,8 +410,150 @@
       color:var(--muted);
     }
 
+    .hero-side{
+      position:relative;
+      min-height:420px;
+      display:flex;
+      align-items:flex-end;
+      justify-content:flex-end;
+      z-index:1;
+    }
+
+    .hero-badge{
+      position:absolute;
+      right:18px;
+      bottom:18px;
+      background:rgba(0,0,0,.58);
+      border:1px solid rgba(255,122,0,.35);
+      border-radius:16px;
+      padding:14px 16px;
+      color:#fff;
+      backdrop-filter:blur(8px);
+      box-shadow:0 12px 30px rgba(0,0,0,.30);
+      z-index:3;
+    }
+
+    .hero-badge strong{
+      display:block;
+      color:var(--orange);
+      font-size:15px;
+      margin-bottom:4px;
+    }
+
+    .hero-badge span{
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    .gym-shapes{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      overflow:hidden;
+    }
+
+    .shape{
+      position:absolute;
+      opacity:.18;
+      filter:drop-shadow(0 16px 24px rgba(0,0,0,.35));
+      transition:transform .18s linear;
+      will-change:transform;
+    }
+
+    .shape.plate{
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      border:10px solid rgba(255,122,0,.92);
+      background:
+        radial-gradient(circle at center, transparent 0 22px, rgba(255,255,255,.05) 22px 28px, transparent 28px),
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.14), transparent 45%),
+        linear-gradient(145deg, rgba(255,122,0,.12), rgba(255,255,255,.02));
+      box-shadow:
+        inset 0 0 0 8px rgba(0,0,0,.34),
+        inset 0 0 22px rgba(255,122,0,.10),
+        0 0 24px rgba(255,122,0,.10);
+    }
+
+    .shape.plate::before,
+    .shape.plate::after{
+      content:"";
+      position:absolute;
+      inset:18px;
+      border-radius:50%;
+      border:2px solid rgba(255,122,0,.22);
+    }
+
+    .shape.dumbbell{
+      width:220px;
+      height:70px;
+    }
+
+    .shape.dumbbell::before{
+      content:"";
+      position:absolute;
+      left:40px;
+      right:40px;
+      top:29px;
+      height:12px;
+      border-radius:999px;
+      background:linear-gradient(180deg, #d8d8d8, #777);
+      box-shadow:inset 0 0 6px rgba(0,0,0,.45);
+    }
+
+    .shape.dumbbell .w{
+      position:absolute;
+      top:12px;
+      width:30px;
+      height:46px;
+      border-radius:8px;
+      background:linear-gradient(180deg, #1d1d1f, #090909);
+      border:2px solid rgba(255,122,0,.40);
+    }
+
+    .shape.dumbbell .w1{ left:0; }
+    .shape.dumbbell .w2{ left:22px; width:22px; }
+    .shape.dumbbell .w3{ right:22px; width:22px; }
+    .shape.dumbbell .w4{ right:0; }
+
+    .shape-bar{
+      position:absolute;
+      width:260px;
+      height:22px;
+      opacity:.14;
+      pointer-events:none;
+      z-index:1;
+      transition:transform .18s linear;
+    }
+
+    .shape-bar::before{
+      content:"";
+      position:absolute;
+      inset:7px 30px;
+      border-radius:999px;
+      background:linear-gradient(180deg, #d9d9d9, #7e7e7e);
+      box-shadow:inset 0 0 6px rgba(0,0,0,.45);
+    }
+
+    .shape-bar::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 10px 11px, transparent 0 6px, rgba(255,122,0,.95) 6px 10px, transparent 10px),
+        radial-gradient(circle at 26px 11px, transparent 0 6px, rgba(255,122,0,.95) 6px 10px, transparent 10px),
+        radial-gradient(circle at calc(100% - 26px) 11px, transparent 0 6px, rgba(255,122,0,.95) 6px 10px, transparent 10px),
+        radial-gradient(circle at calc(100% - 10px) 11px, transparent 0 6px, rgba(255,122,0,.95) 6px 10px, transparent 10px);
+    }
+
+    .shape-1{ top:9%; right:-35px; }
+    .shape-2{ top:62%; left:-48px; width:92px; height:92px; }
+    .shape-3{ top:44%; right:7%; transform:rotate(-18deg); opacity:.12; }
+    .shape-4{ bottom:10%; right:-36px; transform:rotate(11deg); }
+
     section{
-      padding:54px 0;
+      padding:62px 0;
       position:relative;
     }
 
@@ -594,7 +562,7 @@
       margin:0 0 10px;
       font-weight:950;
       letter-spacing:.2px;
-      font-size:28px;
+      font-size:30px;
     }
 
     .title span{
@@ -603,11 +571,11 @@
 
     .sub{
       text-align:center;
-      margin:0 auto 24px;
+      margin:0 auto 26px;
       max-width:780px;
       color:var(--muted);
       font-size:14px;
-      line-height:1.55;
+      line-height:1.6;
     }
 
     .cards{
@@ -619,16 +587,17 @@
 
     .card{
       background:
-        radial-gradient(650px 180px at 50% 0%, rgba(255,122,0,.12), transparent 55%),
+        radial-gradient(650px 180px at 50% 0%, rgba(255,122,0,.10), transparent 55%),
         linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       border:1px solid var(--line);
       border-radius:var(--radius);
-      padding:20px 18px 18px;
+      padding:22px 18px 18px;
       box-shadow:0 16px 45px rgba(0,0,0,.35);
       position:relative;
       overflow:hidden;
       transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
       isolation:isolate;
+      backdrop-filter:blur(6px);
     }
 
     .card::before{
@@ -638,7 +607,7 @@
       width:160px;
       height:160px;
       border-radius:50%;
-      border:14px solid rgba(255,122,0,.08);
+      border:14px solid rgba(255,122,0,.07);
       z-index:0;
       transform:rotate(18deg);
       transition:transform .3s ease;
@@ -658,7 +627,7 @@
       content:"";
       position:absolute;
       inset:-1px;
-      background:radial-gradient(420px 120px at 50% 120%, rgba(255,122,0,.10), transparent 60%);
+      background:radial-gradient(420px 120px at 50% 120%, rgba(255,122,0,.09), transparent 60%);
       pointer-events:none;
       z-index:0;
     }
@@ -713,40 +682,14 @@
       border-top:1px solid var(--line);
       border-bottom:1px solid var(--line);
       background:
-        radial-gradient(900px 240px at 50% 0%, rgba(255,122,0,.18), transparent 70%),
+        radial-gradient(900px 240px at 50% 0%, rgba(255,122,0,.16), transparent 70%),
         linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
       border-radius:24px;
-      padding:30px 20px;
+      padding:32px 20px;
       text-align:center;
       box-shadow:0 14px 40px rgba(0,0,0,.22);
       position:relative;
       overflow:hidden;
-    }
-
-    .cta-band::before{
-      content:"";
-      position:absolute;
-      inset:auto auto -44px -44px;
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      border:14px solid rgba(255,122,0,.10);
-      animation:spinPlate 18s linear infinite;
-    }
-
-    .cta-band::after{
-      content:"";
-      position:absolute;
-      top:18px;
-      right:-25px;
-      width:120px;
-      height:24px;
-      border-radius:999px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.15), rgba(255,255,255,.03)),
-        linear-gradient(90deg, rgba(255,122,0,.18), transparent);
-      transform:rotate(-18deg);
-      opacity:.55;
     }
 
     .cta-band h2{
@@ -779,7 +722,7 @@
       border-radius:22px;
       overflow:hidden;
       border:1px solid var(--line);
-      min-height:260px;
+      min-height:280px;
       background:
         linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.48)),
         url("https://i.ibb.co/6Rm5Tbk3/GYM-imagen2.jpg") center/cover no-repeat;
@@ -822,10 +765,10 @@
     .mini-panel{
       border-radius:20px;
       background:
-        radial-gradient(500px 180px at 50% 0%, rgba(255,122,0,.10), transparent 55%),
+        radial-gradient(500px 180px at 50% 0%, rgba(255,122,0,.08), transparent 55%),
         linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       border:1px solid var(--line);
-      padding:18px;
+      padding:20px;
       box-shadow:0 16px 40px rgba(0,0,0,.26);
     }
 
@@ -839,7 +782,142 @@
       margin:0;
       color:var(--muted);
       font-size:13.5px;
+      line-height:1.6;
+    }
+
+    /* BOTONES ACTIVIDADES AGRANDADOS */
+    .activity-buttons{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+      margin-top:34px;
+      align-items:stretch;
+    }
+
+    .actividad-btn{
+      position:relative;
+      cursor:pointer;
+      min-height:260px;
+      padding:28px 24px 72px;
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.05), rgba(255,255,255,.015)),
+        radial-gradient(520px 220px at 50% 0%, rgba(255,122,0,.14), transparent 60%);
+      transition:all .25s ease;
+      overflow:hidden;
+      box-shadow:0 18px 45px rgba(0,0,0,.28);
+      text-align:left;
+      color:var(--text);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .actividad-btn::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(120deg, transparent, rgba(255,122,0,.20), transparent);
+      opacity:0;
+      transition:opacity .28s ease;
+    }
+
+    .actividad-btn::after{
+      content:"CLICK PARA VER";
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:20px;
+      height:46px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:1px;
+      color:#fff;
+      border-radius:14px;
+      background:linear-gradient(135deg, rgba(255,122,0,.95), rgba(255,155,52,.95));
+      box-shadow:0 10px 24px rgba(255,122,0,.22);
+      border:none;
+    }
+
+    .actividad-btn:hover{
+      transform:translateY(-8px) scale(1.015);
+      border-color:rgba(255,122,0,.38);
+      box-shadow:0 26px 58px rgba(255,122,0,.16);
+    }
+
+    .actividad-btn:hover::before{
+      opacity:1;
+    }
+
+    .actividad-btn:active{
+      transform:translateY(-2px) scale(.995);
+    }
+
+    .actividad-btn .tag{
+      position:absolute;
+      top:18px;
+      right:18px;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.5px;
+      background:rgba(255,122,0,.14);
+      border:1px solid rgba(255,122,0,.22);
+      padding:6px 10px;
+      border-radius:999px;
+      color:var(--orange2);
+      z-index:2;
+    }
+
+    .actividad-btn-top{
+      display:flex;
+      align-items:flex-start;
+      gap:16px;
+      position:relative;
+      z-index:1;
+    }
+
+    .actividad-btn-icon{
+      width:68px;
+      height:68px;
+      border-radius:20px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,122,0,.12);
+      border:1px solid rgba(255,122,0,.22);
+      flex-shrink:0;
+      box-shadow:0 12px 28px rgba(255,122,0,.10);
+    }
+
+    .actividad-btn-icon svg{
+      width:30px;
+      height:30px;
+      fill:var(--orange);
+    }
+
+    .actividad-btn h3{
+      margin:4px 0 10px;
+      font-size:24px;
+      line-height:1.05;
+      color:var(--orange2);
+      text-align:left;
+      position:relative;
+      z-index:1;
+    }
+
+    .actividad-btn p{
+      margin:0;
+      font-size:17px;
       line-height:1.55;
+      color:var(--muted);
+      text-align:left;
+      position:relative;
+      z-index:1;
+      max-width:100%;
+      padding-right:8px;
     }
 
     .testimonials{
@@ -881,7 +959,7 @@
       color:var(--muted);
       font-size:13.5px;
       padding-left:14px;
-      line-height:1.55;
+      line-height:1.6;
     }
 
     blockquote footer{
@@ -921,7 +999,7 @@
       opacity:0;
       pointer-events:none;
       transition:opacity .3s ease;
-      backdrop-filter:blur(6px);
+      backdrop-filter:blur(8px);
     }
 
     .modal.active{
@@ -962,6 +1040,7 @@
       cursor:pointer;
       box-shadow:0 10px 30px rgba(255,122,0,.35);
       transition:transform .2s ease, filter .2s ease;
+      z-index:2;
     }
 
     .modal-close:hover{
@@ -969,635 +1048,143 @@
       filter:brightness(1.04);
     }
 
-    /* SCROLL ANIMATIONS */
-    .reveal{
-      opacity:0;
-      transform:translateY(42px);
-      transition:
-        opacity .8s cubic-bezier(.2,.65,.2,1),
-        transform .8s cubic-bezier(.2,.65,.2,1);
-      will-change:opacity, transform;
+    .activity-modal-box{
+      position:relative;
+      width:min(1080px, 96vw);
+      max-height:92vh;
+      overflow:auto;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)),
+        radial-gradient(700px 240px at 50% 0%, rgba(255,122,0,.10), transparent 55%),
+        #101010;
+      box-shadow:0 26px 80px rgba(0,0,0,.55);
+      animation:zoomIn .3s ease;
     }
 
-    .reveal-left{
-      opacity:0;
-      transform:translateX(-48px);
-      transition:
-        opacity .8s cubic-bezier(.2,.65,.2,1),
-        transform .8s cubic-bezier(.2,.65,.2,1);
-      will-change:opacity, transform;
+    .activity-modal-grid{
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      gap:0;
+      min-height:640px;
     }
 
-    .reveal-right{
-      opacity:0;
-      transform:translateX(48px);
-      transition:
-        opacity .8s cubic-bezier(.2,.65,.2,1),
-        transform .8s cubic-bezier(.2,.65,.2,1);
-      will-change:opacity, transform;
+    .activity-modal-content{
+      padding:34px 30px 28px;
+      position:relative;
     }
 
-    .reveal-scale{
-      opacity:0;
-      transform:scale(.92);
-      transition:
-        opacity .8s cubic-bezier(.2,.65,.2,1),
-        transform .8s cubic-bezier(.2,.65,.2,1);
-      will-change:opacity, transform;
+    .activity-modal-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.09);
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:16px;
     }
 
-    .reveal.show,
-    .reveal-left.show,
-    .reveal-right.show,
-    .reveal-scale.show{
-      opacity:1;
-      transform:none;
+    .activity-modal-title{
+      font-size:34px;
+      line-height:1;
+      margin:0 0 12px;
+      font-weight:950;
+      text-transform:uppercase;
     }
 
-    .delay-1{ transition-delay:.08s; }
-    .delay-2{ transition-delay:.16s; }
-    .delay-3{ transition-delay:.24s; }
-    .delay-4{ transition-delay:.32s; }
-    .delay-5{ transition-delay:.40s; }
-    .delay-6{ transition-delay:.48s; }
-
-    @keyframes floatLogo{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-3px)}
+    .activity-modal-title span{
+      color:var(--orange);
     }
 
-    @keyframes pulseGlow{
-      0%,100%{box-shadow:0 16px 45px rgba(255,122,0,.22)}
-      50%{box-shadow:0 16px 52px rgba(255,122,0,.36)}
+    .activity-modal-text{
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.7;
+      margin:0 0 18px;
     }
 
-    @keyframes heroGlow{
-      0%{opacity:.75; transform:scale(1)}
-      100%{opacity:1; transform:scale(1.03)}
+    .activity-highlights{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
     }
 
-    @keyframes softFloat{
-      0%,100%{transform:translateY(0)}
-      50%{transform:translateY(-4px)}
+    .highlight{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px 14px;
+      border-radius:16px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
     }
 
-    @keyframes spinPlate{
-      from{ transform:rotate(0deg); }
-      to{ transform:rotate(360deg); }
+    .highlight-mark{
+      width:30px;
+      height:30px;
+      border-radius:10px;
+      flex-shrink:0;
+      display:grid;
+      place-items:center;
+      background:rgba(255,122,0,.12);
+      border:1px solid rgba(255,122,0,.22);
+      color:var(--orange);
+      font-weight:900;
     }
 
-    @keyframes spinPlateReverse{
-      from{ transform:rotate(0deg); }
-      to{ transform:rotate(-360deg); }
+    .highlight strong{
+      display:block;
+      margin-bottom:4px;
+      font-size:14px;
     }
 
-    @keyframes floatA{
-      0%,100%{ translate:0 0; }
-      50%{ translate:0 -10px; }
+    .highlight p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
     }
 
-    @keyframes floatB{
-      0%,100%{ translate:0 0; }
-      50%{ translate:0 8px; }
+    .activity-modal-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
     }
 
-    @keyframes floatC{
-      0%,100%{ translate:0 0; }
-      50%{ translate:0 -12px; }
+    .activity-modal-media{
+      border-left:1px solid rgba(255,255,255,.06);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        #0f0f10;
+      padding:22px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
     }
 
-    @keyframes floatD{
-      0%,100%{ translate:0 0; }
-      50%{ translate:0 10px; }
+    .carousel{
+      position:relative;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:#0b0b0b;
+      min-height:380px;
+      box-shadow:0 18px 50px rgba(0,0,0,.28);
     }
 
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(18px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
+    .carousel-track{
+      display:flex;
+      width:100%;
+      height:100%;
+      transition:transform .45s ease;
     }
 
-    @keyframes zoomIn{
-      from{
-        transform:scale(.92);
-        opacity:0;
-      }
-      to{
-        transform:scale(1);
-        opacity:1;
-      }
-    }
-
-    @media (max-width:980px){
-      .hero-grid{
-        grid-template-columns:1fr;
-        min-height:auto;
-        padding:34px 20px 28px;
-      }
-
-      .hero-side{
-        min-height:300px;
-      }
-
-      .equipment-scene{
-        width:100%;
-        max-width:420px;
-        height:300px;
-      }
-
-      .hero-badge{
-        position:static;
-        margin-top:18px;
-        width:max-content;
-      }
-
-      .quick-stats{
-        grid-template-columns:1fr;
-        max-width:360px;
-      }
-
-      .mini-gallery{
-        grid-template-columns:1fr;
-      }
-    }
-
-    @media (max-width:920px){
-      nav ul{
-        justify-content:center;
-      }
-
-      .cards,
-      .testimonials{
-        grid-template-columns:1fr;
-      }
-
-      .brand{
-        min-width:unset;
-      }
-    }
-
-    @media (max-width:640px){
-      .nav{
-        flex-direction:column;
-      }
-
-      .hero-card{
-        min-height:auto;
-      }
-
-      .hero-top{
-        justify-content:center;
-      }
-
-      .hero-copy{
-        text-align:center;
-      }
-
-      .hero-actions{
-        justify-content:center;
-      }
-
-      .pill{
-        font-size:11px;
-        text-align:center;
-      }
-
-      .equipment-scene{
-        height:240px;
-      }
-
-      .plate-left{
-        width:92px;
-        height:92px;
-        left:6px;
-        top:8px;
-      }
-
-      .plate-right{
-        width:78px;
-        height:78px;
-        right:0;
-        top:138px;
-      }
-
-      .dumbbell{
-        width:160px;
-        height:58px;
-      }
-
-      .dumbbell .bar{
-        left:30px;
-        right:30px;
-        top:24px;
-        height:10px;
-      }
-
-      .dumbbell .weight{
-        height:34px;
-        top:12px;
-      }
-
-      .dumbbell-top{
-        right:34px;
-        top:10px;
-      }
-
-      .barbell-pos{
-        left:25px;
-        bottom:40px;
-      }
-
-      .barbell-line{
-        width:210px;
-      }
-
-      .modal-close{
-        top:10px;
-        right:10px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *,
-      *::before,
-      *::after{
-        animation:none !important;
-        transition:none !important;
-        scroll-behavior:auto !important;
-      }
-
-      .reveal,
-      .reveal-left,
-      .reveal-right,
-      .reveal-scale{
-        opacity:1 !important;
-        transform:none !important;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <div class="logo" aria-hidden="true"></div>
-        <b>Guía <span>&</span> Motivación Gym</b>
-      </a>
-
-      <nav aria-label="Menú principal">
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#informacion">Información</a></li>
-          <li><a href="#actividades">Actividades</a></li>
-          <li><a href="#suplementos">Suplementos</a></li>
-          <li><a href="#opiniones">Opiniones</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main id="inicio" class="hero">
-    <div class="wrap">
-      <div class="hero-card">
-        <div class="hero-grid">
-          <div class="hero-copy reveal-left show">
-            <div class="hero-top">
-              <div class="left">
-                <span class="pill">
-                  <span class="dot"></span>
-                  Resultados reales • Ambiente motivador • Seguimiento
-                </span>
-              </div>
-            </div>
-
-            <h1>GUÍA <span class="amp">&</span> MOTIVACIÓN GYM</h1>
-
-            <p class="hero-sub">
-              Entrená con disciplina. Transformá tu cuerpo.
-              <small>Más enfoque, más constancia y menos excusas. El cuerpo no cambia con “mañana arranco”.</small>
-            </p>
-
-            <div class="hero-actions">
-              <a class="btn primary" href="https://wa.me/5492615125111?text=Hola,%20quiero%20info%20del%20gym" target="_blank" rel="noopener">
-                EMPEZAR HOY
-              </a>
-
-              <button type="button" class="btn ghost" onclick="abrirHorarios()">
-                VER HORARIOS
-              </button>
-            </div>
-
-            <div class="quick-stats">
-              <div class="stat reveal delay-1">
-                <strong>Entrenamiento</strong>
-                <span>Con estructura y objetivo</span>
-              </div>
-              <div class="stat reveal delay-2">
-                <strong>Ambiente</strong>
-                <span>Motivador y enfocado</span>
-              </div>
-              <div class="stat reveal delay-3">
-                <strong>Seguimiento</strong>
-                <span>Para progresar en serio</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="hero-side reveal-right show">
-            <div class="equipment-scene" aria-hidden="true">
-              <div class="float-item plate plate-left"></div>
-              <div class="float-item plate plate-right"></div>
-
-              <div class="float-item dumbbell dumbbell-top">
-                <div class="weight w1"></div>
-                <div class="weight w2"></div>
-                <div class="bar"></div>
-                <div class="weight w3"></div>
-                <div class="weight w4"></div>
-              </div>
-
-              <div class="float-item barbell-line barbell-pos">
-                <div class="plate-mini pm1"></div>
-                <div class="plate-mini pm2"></div>
-                <div class="plate-mini pm3"></div>
-                <div class="plate-mini pm4"></div>
-              </div>
-            </div>
-
-            <div class="hero-badge">
-              <strong>WhatsApp directo</strong>
-              <span>+54 9 261 512 5111</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <section id="informacion" class="section-glow">
-    <div class="wrap">
-      <h2 class="title reveal">Más que un gym, <span>un sistema para progresar</span></h2>
-      <div class="divider reveal delay-1"></div>
-
-      <p class="sub reveal delay-2">
-        En Guía & Motivación no venís solo a entrenar: venís a mejorar, avanzar y sostener resultados reales con acompañamiento, constancia y una estructura clara.
-      </p>
-
-      <div class="cards">
-        <article class="card reveal delay-1">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M16 2H8a2 2 0 0 0-2 2v1H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V4a2 2 0 0 0-2-2zm0 3H8V4h8v1zm3 16H5V7h14v14z"/></svg>
-          </div>
-          <h3>Evaluación inicial</h3>
-          <p>Analizamos tu punto de partida para que arranques con una base clara según tu nivel y objetivo.</p>
-        </article>
-
-        <article class="card reveal delay-2">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M3 17h2v4H3v-4zm4-6h2v10H7V11zm4 3h2v7h-2v-7zm4-9h2v16h-2V5zm4 5h2v11h-2V10z"/></svg>
-          </div>
-          <h3>Seguimiento real</h3>
-          <p>El progreso se observa y se ajusta. La idea no es repetir por costumbre, sino avanzar con sentido.</p>
-        </article>
-
-        <article class="card reveal delay-3">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M20 8h-2V6a1 1 0 0 0-1-1h-1V4a1 1 0 0 0-1-1h-2v2h1v2H10V5h1V3H9a1 1 0 0 0-1 1v1H7a1 1 0 0 0-1 1v2H4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v2a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1h2v-2h-1v-2h4v2h-1v2h2a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-2h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/></svg>
-          </div>
-          <h3>Rutinas con objetivo</h3>
-          <p>Cada entrenamiento tiene un propósito: fuerza, masa muscular, resistencia o mejora física general.</p>
-        </article>
-
-        <article class="card reveal delay-4">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 2l2.2 4.9L19 8l-3.7 3.4.9 5L12 14.7 7.8 16.4l.9-5L5 8l4.8-1.1L12 2z"/></svg>
-          </div>
-          <h3>Ambiente que impulsa</h3>
-          <p>Un lugar pensado para entrenar en serio, con energía, enfoque y ganas de progresar de verdad.</p>
-        </article>
-
-        <article class="card reveal delay-5">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 0 1 5 5c0 1.3-.5 2.5-1.3 3.4L22 17l-1.4 1.4-2.2-2.2V22H5v-5.8l-2.2 2.2L1.4 17l6.3-6.6A5 5 0 1 1 12 2zm-2 17h4v-2h-4v2zm0-4h4v-2h-4v2z"/></svg>
-          </div>
-          <h3>Acompañamiento</h3>
-          <p>No se trata solo de hacer ejercicios, sino de entender el proceso y entrenar con intención.</p>
-        </article>
-
-        <article class="card reveal delay-6">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M13 2L6 14h5l-1 8 7-12h-5l1-8z"/></svg>
-          </div>
-          <h3>Resultados visibles</h3>
-          <p>Cuando hay constancia, estructura y compromiso, los cambios llegan. Y sí, se notan.</p>
-        </article>
-      </div>
-
-      <div class="cta-band reveal-scale">
-        <h2><span>ACÁ NO VENÍS A PROBAR</span>, VENÍS A CAMBIAR.</h2>
-        <p style="margin:10px 0 16px; color:var(--muted);">
-          Si querés empezar en un lugar donde se entrena con guía, motivación y enfoque, este puede ser tu próximo paso.
-        </p>
-
-        <a class="btn primary"
-           href="https://wa.me/5492615125111?text=Hola,%20quiero%20empezar%20en%20el%20gym"
-           target="_blank" rel="noopener">
-          QUIERO EMPEZAR
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="actividades" class="section-glow">
-    <div class="wrap">
-      <h2 class="title reveal">Actividades</h2>
-      <div class="divider reveal delay-1"></div>
-      <p class="sub reveal delay-2">Podés adaptar esta sección según las clases y servicios reales de tu gym.</p>
-
-      <div class="cards">
-        <article class="card reveal delay-1">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M20 8h-2V6a1 1 0 0 0-1-1h-1V4a1 1 0 0 0-1-1h-2v2h1v2H10V5h1V3H9a1 1 0 0 0-1 1v1H7a1 1 0 0 0-1 1v2H4a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2v2a1 1 0 0 0 1 1h1v1a1 1 0 0 0 1 1h2v-2h-1v-2h4v2h-1v2h2a1 1 0 0 0 1-1v-1h1a1 1 0 0 0 1-1v-2h2a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/></svg>
-          </div>
-          <h3>Musculación</h3>
-          <p>Entrenamiento de fuerza, hipertrofia y acondicionamiento general para progresar con base sólida.</p>
-        </article>
-
-        <article class="card reveal delay-2">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M7 21c-2 0-4-2-4-4 0-2.5 1.6-4.4 3.5-5.3.7-.3 1.5-.4 2.2-.3l.3-2.2c.2-1.4 1.4-2.5 2.9-2.5h1.6c1 0 1.9.5 2.4 1.3l1.1 1.7c.3.5.4 1 .4 1.5v1.6c0 .9-.4 1.8-1.1 2.4l-1.2 1.1c-.5.5-1.2.8-1.9.8H7z"/></svg>
-          </div>
-          <h3>Funcional</h3>
-          <p>Trabajo dinámico para resistencia, coordinación, movilidad y potencia, sin dejar el cuerpo en modo adorno.</p>
-        </article>
-
-        <article class="card reveal delay-3">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M4 19h16v2H4zm2-4h12v2H6zm2-4h8v2H8zm2-4h4v2h-4z"/></svg>
-          </div>
-          <h3>Rutinas personalizadas</h3>
-          <p>Planes adaptados al objetivo, la experiencia y el progreso de cada alumno.</p>
-        </article>
-      </div>
-
-      <div class="mini-gallery">
-        <div class="gallery-card reveal-left">
-          <div class="gallery-copy">
-            <strong>Entrená en un espacio real</strong>
-            <span>Equipamiento, orden y ambiente pensado para progresar.</span>
-          </div>
-        </div>
-
-        <div class="gallery-side">
-          <div class="mini-panel reveal-right delay-1">
-            <h4>Constancia > motivación de lunes</h4>
-            <p>La motivación ayuda, pero la constancia cambia el cuerpo. Por eso la experiencia del gym tiene que invitar a volver.</p>
-          </div>
-
-          <div class="mini-panel reveal-right delay-2">
-            <h4>Entrená con criterio</h4>
-            <p>Menos improvisación, más dirección. Así es como el esfuerzo deja de ser aleatorio y empieza a dar resultados.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="suplementos" class="section-glow">
-    <div class="wrap">
-      <h2 class="title reveal">Suplementos</h2>
-      <div class="divider reveal delay-1"></div>
-      <p class="sub reveal delay-2">Un apoyo útil para acompañar entrenamiento, recuperación y alimentación.</p>
-
-      <div class="cards">
-        <article class="card reveal delay-1">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M7 2h10v2h-1v3.2l3.6 6.1A4 4 0 0 1 16.2 20H7.8a4 4 0 0 1-3.4-6.7L8 7.2V4H7V2zm3 2v3.7L6.1 14A2 2 0 0 0 7.8 18h8.4a2 2 0 0 0 1.7-3L14 7.7V4h-4z"/></svg>
-          </div>
-          <h3>Creatina</h3>
-          <p>Ayuda al rendimiento, la fuerza y la recuperación muscular.</p>
-        </article>
-
-        <article class="card reveal delay-2">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M7 3h10l1 4v12a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V7l1-4zm2 2-.5 2h7L15 5H9z"/></svg>
-          </div>
-          <h3>Proteína Whey</h3>
-          <p>Práctica para complementar el consumo diario de proteínas y apoyar la recuperación.</p>
-        </article>
-
-        <article class="card reveal delay-3">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M13 2L6 14h5l-1 8 7-12h-5l1-8z"/></svg>
-          </div>
-          <h3>Pre-entreno</h3>
-          <p>Mayor energía y enfoque para sesiones intensas. Para entrenar despierto, no en modo ahorro.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="opiniones" class="section-glow">
-    <div class="wrap">
-      <h2 class="title reveal">Lo que dicen los alumnos</h2>
-      <div class="divider reveal delay-1"></div>
-
-      <div class="testimonials">
-        <blockquote class="reveal delay-1">
-          <p><b>Excelente ambiente</b>, me ayudó a ordenar el entrenamiento y sostenerlo.</p>
-          <footer>Alumno/a</footer>
-        </blockquote>
-
-        <blockquote class="reveal delay-2">
-          <p>Se siente la <b>motivación</b> desde que entrás. Muy buen acompañamiento.</p>
-          <footer>Alumno/a</footer>
-        </blockquote>
-
-        <blockquote class="reveal delay-3">
-          <p>Mejoré fuerza, constancia y ganas de entrenar en <b>pocas semanas</b>.</p>
-          <footer>Alumno/a</footer>
-        </blockquote>
-      </div>
-    </div>
-  </section>
-
-  <footer class="reveal">
-    <div class="wrap footer-grid">
-      <div>
-        <b>Guía & Motivación Gym</b>
-        <div class="soft2" style="margin-top:6px;">Disciplina, progreso y constancia.</div>
-      </div>
-      <div class="soft2">© <span id="y"></span></div>
-    </div>
-  </footer>
-
-  <div id="modalHorarios" class="modal" aria-hidden="true">
-    <div class="modal-box">
-      <button class="modal-close" type="button" onclick="cerrarHorarios()" aria-label="Cerrar">✕</button>
-      <img
-        class="modal-img"
-        src="https://i.ibb.co/GvGNP25z/1111.jpg"
-        alt="Horarios Guía & Motivación Gym"
-      />
-    </div>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    const modalHorarios = document.getElementById("modalHorarios");
-
-    function abrirHorarios(){
-      modalHorarios.classList.add("active");
-      modalHorarios.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
-
-    function cerrarHorarios(){
-      modalHorarios.classList.remove("active");
-      modalHorarios.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
-
-    modalHorarios.addEventListener("click", function(e){
-      if(e.target === modalHorarios){
-        cerrarHorarios();
-      }
-    });
-
-    document.addEventListener("keydown", function(e){
-      if(e.key === "Escape" && modalHorarios.classList.contains("active")){
-        cerrarHorarios();
-      }
-    });
-
-    const revealElements = document.querySelectorAll(
-      ".reveal, .reveal-left, .reveal-right, .reveal-scale"
-    );
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.14,
-      rootMargin: "0px 0px -40px 0px"
-    });
-
-    revealElements.forEach(el => {
-      if(!el.classList.contains("show")){
-        observer.observe(el);
-      }
-    });
-  </script>
-</body>
-</html>
+    .carousel-slide{
+      min-width:100%;
+      position:relative;
+      min-height:380px
